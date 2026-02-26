@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Abdellatif - Software Engineer</title>
+    <meta name="description" content="Portfolio of Ahmed Abdellatif, a Software Engineer and Competitive Programmer specializing in algorithms, data structures, and machine learning.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="dark-theme">
+    
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container nav-content">
+            <a href="#" class="logo">3blatif<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#cp">Competitions</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact" class="btn btn-primary btn-small">Contact</a></li>
+            </ul>
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+                <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg id="sun-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay glass">
+        <ul class="mobile-nav-links">
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#cp" class="mobile-link">Competitions</a></li>
+            <li><a href="#projects" class="mobile-link">Projects</a></li>
+            <li><a href="#contact" class="mobile-link btn btn-primary">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="section hero" id="hero">
+        <div class="container hero-content fade-in">
+            <span class="badge">Available for Work</span>
+            <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ahmed Abdellatif</span>. <br>Software Engineer.</h1>
+            <p class="hero-subtitle">I build high-performance applications, tackle complex algorithms, and bridge the gap between computing fundamentals and modern software solutions.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#cp" class="btn btn-outline">Competitive Stats</a>
+            </div>
+        </div>
+        <!-- Decorative Background -->
+        <div class="hero-bg-glow"></div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container fade-in">
+            <div class="section-header">
+                <h2>About <span class="text-primary">Me</span></h2>
+                <p>Computer & Data Science Student</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card glass-card">
+                    <h3>My Journey</h3>
+                    <p>I am a passionate computer science student with a deep interest in algorithms, system architecture, and machine learning. Through building hardware from scratch to deploying data applications, I continuously challenge myself to understand both the theoretical depth and practical application of technology.</p>
+                </div>
+                <div class="about-card glass-card">
+                    <h3>Coursework</h3>
+                    <div class="tags">
+                        <span class="tag">Data Structures</span>
+                        <span class="tag">Algorithm Design</span>
+                        <span class="tag">System Design</span>
+                        <span class="tag">Data Science</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Advanced Calculus</span>
+                        <span class="tag">Operating Systems</span>
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag">Software Engineering</span>
+                        <span class="tag">Artificial Intelligence</span>
+                        <span class="tag">Database Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Programming Section (Bento Grid) -->
+    <section class="section bg-alt" id="cp">
+        <div class="container fade-in">
+            <div class="section-header">
+                <h2>Competitive <span class="text-primary">Programming</span></h2>
+                <p>Solving complex algorithms under pressure</p>
+            </div>
+            <div class="bento-grid">
+                
+                <!-- Codeforces Bento Box -->
+                <a href="https://codeforces.com/profile/3blatif" target="_blank" rel="noopener noreferrer" class="bento-card codeforces glass-card">
+                    <div class="bento-header">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M4.53 7.82V19.4c0 1.25-1.01 2.26-2.26 2.26S0 20.65 0 19.4V7.82c0-1.25 1.01-2.26 2.26-2.26s2.27 1.01 2.27 2.26zm9.74 3.12v8.46c0 1.25-1.02 2.26-2.27 2.26s-2.26-1.01-2.26-2.26v-8.46c0-1.25 1.01-2.27 2.26-2.27 1.25 0 2.27 1.02 2.27 2.27zm9.73-8.68v17.14c0 1.25-1.01 2.26-2.26 2.26s-2.27-1.01-2.27-2.26V2.26C19.47 1.01 20.48 0 21.73 0s2.27 1.01 2.27 2.26z"/></svg>
+                        <h3>Codeforces</h3>
+                        <span class="handle">@3blatif</span>
+                    </div>
+                    <div class="bento-body">
+                        <p>Focusing on harder, mathematical, and logic-heavy problems. Active participation in Div 2/Div 3 rounds, solving 1000+ rating problems and proving performance under pressure.</p>
+                    </div>
+                    <div class="bento-footer">
+                        View Profile &rarr;
+                    </div>
+                </a>
+
+                <!-- LeetCode Bento Box -->
+                <a href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank" rel="noopener noreferrer" class="bento-card leetcode glass-card">
+                    <div class="bento-header">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.956-.207a1.384 1.384 0 0 0-.214-1.956l-3.501-2.831a4.356 4.356 0 0 0-1.874-.863l.635-.68 5.412-5.798c.536-.575.5A1.444 1.444 0 0 0 18.6 0zM5.561 24h15.602c.81 0 1.467-.625 1.467-1.396 0-.772-.657-1.396-1.467-1.396H5.561c-.81 0-1.467.625-1.467 1.396 0 .771.657 1.396 1.467 1.396z"/></svg>
+                        <h3>LeetCode</h3>
+                        <span class="handle">@ahmedabdellatif1</span>
+                    </div>
+                    <div class="bento-body">
+                        <p>A rigorous Data Structures & Algorithms portfolio. Showcasing consistency, interview-prep, streaks, and competitive coding speed during global developer contests.</p>
+                    </div>
+                    <div class="bento-footer">
+                        View Profile &rarr;
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container fade-in">
+            <div class="section-header">
+                <h2>Featured <span class="text-primary">Projects</span></h2>
+                <p>Translating knowledge into practical, robust systems</p>
+            </div>
+            
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <article class="project-card glass-card">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Systems</span>
+                            <span class="project-tag">Architecture</span>
+                        </div>
+                        <h3 class="project-title">Nand2Tetris</h3>
+                        <p class="project-desc">Tackling the fundamentals of computing by building a complete computer system from scratch. Starting from basic Nand gates, moving up to the hardware architecture, assembly language, and finally the software layer to run Tetris.</p>
+                        <div class="tech-stack">
+                            <span>Assembly</span>
+                            <span>Logic Design</span>
+                            <span>Computer Architecture</span>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card glass-card">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag prj-data">Data Science</span>
+                            <span class="project-tag prj-data">ML</span>
+                        </div>
+                        <h3 class="project-title">Car Price Prediction ("Htla2ee")</h3>
+                        <p class="project-desc">Engineered an ethical web scraping pipeline and data engineering workflow for the Egyptian marketplace 'Hatla2ee'. Managed MongoDB database integration and assisted in data cleaning/preprocessing for the ML model.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>MongoDB</span>
+                            <span>Scikit-Learn</span>
+                            <span>Pandas</span>
+                            <span>Web Scraping</span>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card glass-card">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag prj-data">Data Science</span>
+                        </div>
+                        <h3 class="project-title">Student Performance Analysis</h3>
+                        <p class="project-desc">Conducted deep Exploratory Data Analysis (EDA) on student metrics. Discovered trends and correlations between student demographics, backgrounds, and their overall academic success or failure.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Matplotlib</span>
+                            <span>EDA</span>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section bg-alt" id="contact">
+        <div class="container fade-in">
+            <div class="contact-box glass-card">
+                <div class="contact-text">
+                    <h2>Ready to <span class="text-primary">Connect?</span></h2>
+                    <p>Whether it's an interesting problem to solve, a discussion on algorithms, or an exciting Software Engineering role, I'm always open to talking.</p>
+                    <div class="social-links">
+                        <a href="https://codeforces.com/profile/3blatif" target="_blank" class="social-icon">CF</a>
+                        <a href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank" class="social-icon">LC</a>
+                        <a href="#" target="_blank" class="social-icon">GH</a>
+                        <a href="#" target="_blank" class="social-icon">IN</a>
+                    </div>
+                </div>
+                <div class="contact-action">
+                    <a href="mailto:contact@example.com" class="btn btn-primary btn-large">Send Me an Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">3blatif<span>.</span></a>
+                <p>Software Engineer. Architecting robust systems.</p>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2026 Ahmed Abdellatif. Built from scratch.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Scripts -->
+    <script src="./js/app.js"></script>
+</body>
+</html>
