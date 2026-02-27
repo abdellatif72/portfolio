@@ -1,39 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Abdellatif - Software Engineer</title>
-    <meta name="description" content="Portfolio of Ahmed Abdellatif, a Software Engineer and Competitive Programmer specializing in algorithms, data structures, and machine learning.">
-    
+    <title>3blatif. - Computer &amp; Data Science Student</title>
+    <meta name="description"
+        content="Portfolio of Ahmed (3blatif) Abdellatif, a Computer Science &amp; Data Science Student passionate about problem-solving, algorithms, and software development.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* Journey Cards */
+        .journey-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .journey-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .journey-card-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+            line-height: 1;
+            margin-top: 4px;
+        }
+
+        .journey-card-body h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .journey-card-body p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+    </style>
 </head>
+
 <body class="dark-theme">
-    
+    <!-- Cursor Glow -->
+    <div id="cursor-glow"></div>
+
     <!-- Navigation -->
     <nav class="navbar glass">
         <div class="container nav-content">
             <a href="#" class="logo">3blatif<span>.</span></a>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
+                <li><a href="#about">My Journey</a></li>
                 <li><a href="#cp">Competitions</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact" class="btn btn-primary btn-small">Contact</a></li>
             </ul>
             <!-- Theme Toggle -->
             <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
-                <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                <svg id="sun-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="sun-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
             </button>
             <!-- Mobile Menu Toggle -->
             <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
             </button>
         </div>
     </nav>
@@ -41,7 +99,7 @@
     <!-- Mobile Nav Overlay -->
     <div class="mobile-nav-overlay glass">
         <ul class="mobile-nav-links">
-            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#about" class="mobile-link">My Journey</a></li>
             <li><a href="#cp" class="mobile-link">Competitions</a></li>
             <li><a href="#projects" class="mobile-link">Projects</a></li>
             <li><a href="#contact" class="mobile-link btn btn-primary">Contact</a></li>
@@ -51,44 +109,100 @@
     <!-- Hero Section -->
     <header class="section hero" id="hero">
         <div class="container hero-content fade-in">
-            <span class="badge">Available for Work</span>
-            <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ahmed Abdellatif</span>. <br>Software Engineer.</h1>
-            <p class="hero-subtitle">I build high-performance applications, tackle complex algorithms, and bridge the gap between computing fundamentals and modern software solutions.</p>
+            <span class="badge">Always Learning</span>
+            <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ahmed Abdellatif</span>. <br>Computer &amp; Data
+                Science Student.</h1>
+            <p class="hero-subtitle">If I could work on one type of problem for the rest of my life, it would be
+                solving problems using software — no matter the stack. I turn data into stories, build robust logic, and
+                thrive in competitive programming.</p>
             <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#cp" class="btn btn-outline">Competitive Stats</a>
+                <a href="#about" class="btn btn-primary">My Story</a>
+                <a href="#projects" class="btn btn-outline">View Projects</a>
             </div>
         </div>
         <!-- Decorative Background -->
         <div class="hero-bg-glow"></div>
     </header>
 
-    <!-- About Section -->
+    <!-- About Section (The Story) -->
     <section class="section" id="about">
         <div class="container fade-in">
             <div class="section-header">
-                <h2>About <span class="text-primary">Me</span></h2>
-                <p>Computer & Data Science Student</p>
+                <h2>My <span class="text-primary">Journey</span></h2>
+                <p>From a middle school HTML assignment to leading machine learning and competitive programming teams.</p>
             </div>
+
+            <!-- Chapter Cards -->
+            <div class="journey-cards">
+
+                <div class="journey-card glass-card">
+                    <div class="journey-card-icon">🌱</div>
+                    <div class="journey-card-body">
+                        <h3>The Spark</h3>
+                        <p>It all started in middle school — a simple HTML login page assignment that turned into an obsession. Every weekend I was tuning templates, fixing CSS bugs, and pushing my little project further than it ever needed to go. I just couldn't stop.</p>
+                    </div>
+                </div>
+
+                <div class="journey-card glass-card">
+                    <div class="journey-card-icon">🚀</div>
+                    <div class="journey-card-body">
+                        <h3>CS50x &amp; The Real Journey Begins</h3>
+                        <p>In high school, I discovered <strong>CS50x</strong> — and things got serious. I shifted from HTML to C, then C++, and started solving problems on CodeWars. Over <strong>300+ problems solved</strong> later, I had found my calling: competitive programming. The thrill of cracking a hard problem with pure logic is something I've never stopped chasing.</p>
+                    </div>
+                </div>
+
+                <div class="journey-card glass-card">
+                    <div class="journey-card-icon">🏛️</div>
+                    <div class="journey-card-body">
+                        <h3>University, Codeforces &amp; Academic Growth</h3>
+                        <p>At university, I discovered Codeforces and had a whole community to compete against. I dove deep into Algorithms, Data Structures, OOP, OS, System Design, and Databases. On the data side: Calculus, Linear Algebra, Statistics, Data Mining, Regression, and Machine Learning. I even built a computer from scratch using HDL — logic gates all the way up.</p>
+                    </div>
+                </div>
+
+                <div class="journey-card glass-card">
+                    <div class="journey-card-icon">🧑‍🏫</div>
+                    <div class="journey-card-body">
+                        <h3>Leading &amp; Mentoring (ICPC)</h3>
+                        <p>My passion evolved from just competing to <em>helping others compete</em>. I became an ICPC trainer, mentor, and problem setter at my university, growing the CP community by <strong>30%</strong>. Leading 3 teams simultaneously through demanding final projects taught me what real teamwork and pressure look like.</p>
+                    </div>
+                </div>
+
+                <div class="journey-card glass-card">
+                    <div class="journey-card-icon">🌐</div>
+                    <div class="journey-card-body">
+                        <h3>Digital Egypt Pioneers Initiative</h3>
+                        <p>My drive for software engineering led me to the DEPI <strong>Flutter Development</strong> track — learning to "code once, run everywhere." It broadened my mindset into real product development. Next on my list: deeper Backend Engineering, AI, and Machine Learning.</p>
+                    </div>
+                </div>
+
+            </div>
+
             <div class="about-grid">
                 <div class="about-card glass-card">
-                    <h3>My Journey</h3>
-                    <p>I am a passionate computer science student with a deep interest in algorithms, system architecture, and machine learning. Through building hardware from scratch to deploying data applications, I continuously challenge myself to understand both the theoretical depth and practical application of technology.</p>
+                    <h3>Technologies &amp; Languages</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">The core tools I leverage to solve
+                        algorithmic and engineering challenges.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">R</span>
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">Flutter</span>
+                    </div>
                 </div>
                 <div class="about-card glass-card">
-                    <h3>Coursework</h3>
+                    <h3>Data Science &amp; Tools</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">Expertise gained through team-driven
+                        university projects in analysis and ML.</p>
                     <div class="tags">
-                        <span class="tag">Data Structures</span>
-                        <span class="tag">Algorithm Design</span>
-                        <span class="tag">System Design</span>
-                        <span class="tag">Data Science</span>
+                        <span class="tag">Data Analysis</span>
+                        <span class="tag">Web Scraping</span>
                         <span class="tag">Machine Learning</span>
-                        <span class="tag">Advanced Calculus</span>
-                        <span class="tag">Operating Systems</span>
-                        <span class="tag">Linear Algebra</span>
-                        <span class="tag">Software Engineering</span>
-                        <span class="tag">Artificial Intelligence</span>
-                        <span class="tag">Database Systems</span>
+                        <span class="tag">Data Manipulation</span>
+                        <span class="tag">Data Cleaning</span>
+                        <span class="tag">PowerBI</span>
+                        <span class="tag">Regex</span>
                     </div>
                 </div>
             </div>
@@ -100,19 +214,25 @@
         <div class="container fade-in">
             <div class="section-header">
                 <h2>Competitive <span class="text-primary">Programming</span></h2>
-                <p>Solving complex algorithms under pressure</p>
+                <p>The habit that built my algorithmic foundation</p>
             </div>
             <div class="bento-grid">
-                
+
                 <!-- Codeforces Bento Box -->
-                <a href="https://codeforces.com/profile/3blatif" target="_blank" rel="noopener noreferrer" class="bento-card codeforces glass-card">
+                <a href="https://codeforces.com/profile/3blatif" target="_blank" rel="noopener noreferrer"
+                    class="bento-card codeforces glass-card">
                     <div class="bento-header">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M4.53 7.82V19.4c0 1.25-1.01 2.26-2.26 2.26S0 20.65 0 19.4V7.82c0-1.25 1.01-2.26 2.26-2.26s2.27 1.01 2.27 2.26zm9.74 3.12v8.46c0 1.25-1.02 2.26-2.27 2.26s-2.26-1.01-2.26-2.26v-8.46c0-1.25 1.01-2.27 2.26-2.27 1.25 0 2.27 1.02 2.27 2.27zm9.73-8.68v17.14c0 1.25-1.01 2.26-2.26 2.26s-2.27-1.01-2.27-2.26V2.26C19.47 1.01 20.48 0 21.73 0s2.27 1.01 2.27 2.26z"/></svg>
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                            <path
+                                d="M4.53 7.82V19.4c0 1.25-1.01 2.26-2.26 2.26S0 20.65 0 19.4V7.82c0-1.25 1.01-2.26 2.26-2.26s2.27 1.01 2.27 2.26zm9.74 3.12v8.46c0 1.25-1.02 2.26-2.27 2.26s-2.26-1.01-2.26-2.26v-8.46c0-1.25 1.01-2.27 2.26-2.27 1.25 0 2.27 1.02 2.27 2.27zm9.73-8.68v17.14c0 1.25-1.01 2.26-2.26 2.26s-2.27-1.01-2.27-2.26V2.26C19.47 1.01 20.48 0 21.73 0s2.27 1.01 2.27 2.26z" />
+                        </svg>
                         <h3>Codeforces</h3>
                         <span class="handle">@3blatif</span>
                     </div>
                     <div class="bento-body">
-                        <p>Focusing on harder, mathematical, and logic-heavy problems. Active participation in Div 2/Div 3 rounds, solving 1000+ rating problems and proving performance under pressure.</p>
+                        <p>The most consistent habit of my journey. I have solved <strong>over 1,350 problems</strong>
+                            on this platform, with my highest relentless streak reaching <strong>23 days in a
+                                row</strong>. Proud participant in IEEEXtreme, ECPC, and active ICPC mentor.</p>
                     </div>
                     <div class="bento-footer">
                         View Profile &rarr;
@@ -120,14 +240,19 @@
                 </a>
 
                 <!-- LeetCode Bento Box -->
-                <a href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank" rel="noopener noreferrer" class="bento-card leetcode glass-card">
+                <a href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank" rel="noopener noreferrer"
+                    class="bento-card leetcode glass-card">
                     <div class="bento-header">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.956-.207a1.384 1.384 0 0 0-.214-1.956l-3.501-2.831a4.356 4.356 0 0 0-1.874-.863l.635-.68 5.412-5.798c.536-.575.5A1.444 1.444 0 0 0 18.6 0zM5.561 24h15.602c.81 0 1.467-.625 1.467-1.396 0-.772-.657-1.396-1.467-1.396H5.561c-.81 0-1.467.625-1.467 1.396 0 .771.657 1.396 1.467 1.396z"/></svg>
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                            <path
+                                d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.956-.207a1.384 1.384 0 0 0-.214-1.956l-3.501-2.831a4.356 4.356 0 0 0-1.874-.863l.635-.68 5.412-5.798c.536-.575.5A1.444 1.444 0 0 0 18.6 0zM5.561 24h15.602c.81 0 1.467-.625 1.467-1.396 0-.772-.657-1.396-1.467-1.396H5.561c-.81 0-1.467.625-1.467 1.396 0 .771.657 1.396 1.467 1.396z" />
+                        </svg>
                         <h3>LeetCode</h3>
                         <span class="handle">@ahmedabdellatif1</span>
                     </div>
                     <div class="bento-body">
-                        <p>A rigorous Data Structures & Algorithms portfolio. Showcasing consistency, interview-prep, streaks, and competitive coding speed during global developer contests.</p>
+                        <p>My Data Structures &amp; Algorithms training ground. Showcasing consistency, interview-prep
+                            discipline, streaks, and competitive coding speed during global developer challenges.</p>
                     </div>
                     <div class="bento-footer">
                         View Profile &rarr;
@@ -142,38 +267,22 @@
         <div class="container fade-in">
             <div class="section-header">
                 <h2>Featured <span class="text-primary">Projects</span></h2>
-                <p>Translating knowledge into practical, robust systems</p>
+                <p>Theory applied into robust logic and data pipelines</p>
             </div>
-            
-            <div class="projects-grid">
-                
-                <!-- Project 1 -->
-                <article class="project-card glass-card">
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Systems</span>
-                            <span class="project-tag">Architecture</span>
-                        </div>
-                        <h3 class="project-title">Nand2Tetris</h3>
-                        <p class="project-desc">Tackling the fundamentals of computing by building a complete computer system from scratch. Starting from basic Nand gates, moving up to the hardware architecture, assembly language, and finally the software layer to run Tetris.</p>
-                        <div class="tech-stack">
-                            <span>Assembly</span>
-                            <span>Logic Design</span>
-                            <span>Computer Architecture</span>
-                        </div>
-                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
-                    </div>
-                </article>
 
-                <!-- Project 2 -->
+            <div class="projects-grid">
+
+                <!-- Project 1: Data Science & ML -->
                 <article class="project-card glass-card">
                     <div class="project-content">
                         <div class="project-tags">
                             <span class="project-tag prj-data">Data Science</span>
                             <span class="project-tag prj-data">ML</span>
                         </div>
-                        <h3 class="project-title">Car Price Prediction ("Htla2ee")</h3>
-                        <p class="project-desc">Engineered an ethical web scraping pipeline and data engineering workflow for the Egyptian marketplace 'Hatla2ee'. Managed MongoDB database integration and assisted in data cleaning/preprocessing for the ML model.</p>
+                        <h3 class="project-title">Used Car Market Explorer ("Htla2ee")</h3>
+                        <p class="project-desc">A comprehensive data science project predicting used car prices in
+                            Egypt. I engineered an ethical web scraping pipeline, managed MongoDB integration, and
+                            assisted in data cleaning. Features Ridge Regression and XGBoost models via Streamlit.</p>
                         <div class="tech-stack">
                             <span>Python</span>
                             <span>MongoDB</span>
@@ -181,27 +290,71 @@
                             <span>Pandas</span>
                             <span>Web Scraping</span>
                         </div>
+                        <a href="https://github.com/khilo619/Htla2ee-Streamlit-app" target="_blank"
+                            class="btn btn-outline btn-small mt-4">View Source</a>
+                    </div>
+                </article>
+
+                <!-- Project 2: Systems & Low-level -->
+                <article class="project-card glass-card">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Systems</span>
+                            <span class="project-tag">Architecture</span>
+                        </div>
+                        <h3 class="project-title">Nand2Tetris</h3>
+                        <p class="project-desc">Tackling the fundamentals of computing by building a complete computer
+                            system from scratch. Starting from basic Nand gates, moving up to the hardware architecture,
+                            assembly language, and finally the software layer to run Tetris.</p>
+                        <div class="tech-stack">
+                            <span>Assembly</span>
+                            <span>Logic Design</span>
+                            <span>HDL</span>
+                            <span>Architecture</span>
+                        </div>
                         <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
                     </div>
                 </article>
 
-                <!-- Project 3 -->
+                <!-- Project 3: Data Analysis & Visualization -->
                 <article class="project-card glass-card">
                     <div class="project-content">
                         <div class="project-tags">
-                            <span class="project-tag prj-data">Data Science</span>
+                            <span class="project-tag prj-data">Data Analysis</span>
                         </div>
-                        <h3 class="project-title">Student Performance Analysis</h3>
-                        <p class="project-desc">Conducted deep Exploratory Data Analysis (EDA) on student metrics. Discovered trends and correlations between student demographics, backgrounds, and their overall academic success or failure.</p>
+                        <h3 class="project-title">R-U-Ready Dashboard</h3>
+                        <p class="project-desc">Interactive Shiny application for analyzing transaction data. Features
+                            K-means clustering for segmentation and Apriori association rule mining to discover patterns
+                            in spending behavior.</p>
                         <div class="tech-stack">
-                            <span>Python</span>
-                            <span>Pandas</span>
-                            <span>Matplotlib</span>
-                            <span>EDA</span>
+                            <span>R</span>
+                            <span>Shiny</span>
+                            <span>dplyr</span>
+                            <span>arules</span>
                         </div>
                         <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
                     </div>
                 </article>
+
+                <!-- Project 4: Java & Software Development -->
+                <article class="project-card glass-card">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Software Eng</span>
+                            <span class="project-tag">GUI</span>
+                        </div>
+                        <h3 class="project-title">ATM Application</h3>
+                        <p class="project-desc">A Java-based graphical simulator for ATM functionalities. Built with
+                            Java Swing, demonstrating robust input validation, error handling, and iterative software
+                            development practices.</p>
+                        <div class="tech-stack">
+                            <span>Java</span>
+                            <span>Java Swing</span>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
@@ -212,7 +365,8 @@
             <div class="contact-box glass-card">
                 <div class="contact-text">
                     <h2>Ready to <span class="text-primary">Connect?</span></h2>
-                    <p>Whether it's an interesting problem to solve, a discussion on algorithms, or an exciting Software Engineering role, I'm always open to talking.</p>
+                    <p>Whether it's discussing algorithmic theories, diving into raw data, or exploring internship
+                        opportunities, I'm always open to talking.</p>
                     <div class="social-links">
                         <a href="https://codeforces.com/profile/3blatif" target="_blank" class="social-icon">CF</a>
                         <a href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank" class="social-icon">LC</a>
@@ -232,10 +386,10 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="#" class="logo">3blatif<span>.</span></a>
-                <p>Software Engineer. Architecting robust systems.</p>
+                <p>Computer Science &amp; Data Science Student.</p>
             </div>
             <div class="footer-right">
-                <p>&copy; 2026 Ahmed Abdellatif. Built from scratch.</p>
+                <p>&copy; 2026 Ahmed Abdellatif. Always Learning.</p>
             </div>
         </div>
     </footer>
@@ -243,4 +397,5 @@
     <!-- App Scripts -->
     <script src="./js/app.js"></script>
 </body>
+
 </html>

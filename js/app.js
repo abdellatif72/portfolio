@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const moonIcon = document.getElementById('moon-icon');
     const sunIcon = document.getElementById('sun-icon');
 
-    // Check local storage for theme preference, default to dark
-    let currentTheme = localStorage.getItem('theme') || 'dark';
+    // Always default to dark mode
+    let currentTheme = 'dark';
+    localStorage.setItem('theme', 'dark');
 
     function applyTheme(theme) {
         if (theme === 'dark') {
@@ -81,4 +82,24 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => {
         appearOnScroll.observe(el);
     });
+
+    /* ==========================================================================
+       Cursor Glow Logic
+       ========================================================================== */
+    const glow = document.getElementById('cursor-glow');
+    if (glow) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            glow.style.left = mouseX + 'px';
+            glow.style.top = mouseY + 'px';
+        });
+
+        // Set initial position to center
+        glow.style.left = mouseX + 'px';
+        glow.style.top = mouseY + 'px';
+    }
 });
