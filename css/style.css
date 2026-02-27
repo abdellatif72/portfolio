@@ -577,10 +577,34 @@ h2 {
     transition: var(--transition);
 }
 
+.social-icon i {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
 .social-icon:hover {
-    border-color: var(--primary);
-    color: var(--primary);
     transform: translateY(-3px);
+}
+
+/* platform-specific hover colors */
+.social-icon.github:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.social-icon.linkedin:hover {
+    background-color: #0A66C2;
+    color: #fff;
+}
+
+.social-icon.leetcode:hover {
+    background-color: #FFA116;
+    color: #fff;
+}
+
+.social-icon.codeforces:hover {
+    background-color: #1F8ACB;
+    color: #fff;
 }
 
 footer {
