@@ -47,6 +47,39 @@
             color: var(--text-muted);
             line-height: 1.8;
         }
+
+        /* In-Progress Badge */
+        .badge-wip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 999px;
+            padding: 3px 10px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .badge-wip::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #f59e0b;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.75); }
+        }
     </style>
 </head>
 
@@ -280,15 +313,13 @@
                             <span class="project-tag prj-data">ML</span>
                         </div>
                         <h3 class="project-title">Used Car Market Explorer ("Htla2ee")</h3>
-                        <p class="project-desc">A comprehensive data science project predicting used car prices in
-                            Egypt. I engineered an ethical web scraping pipeline, managed MongoDB integration, and
-                            assisted in data cleaning. Features Ridge Regression and XGBoost models via Streamlit.</p>
+                        <p class="project-desc">Scraped <strong>11K+ listings</strong> from Egypt's largest used car marketplace, extracting <strong>8 key attributes</strong> per listing (brand, model, price, year, mileage, and more). Cleaned and standardized <strong>100% of records</strong>, resolving inconsistent formats and missing values. Automated preprocessing workflows, cutting manual formatting time by <strong>~40%</strong>. Features Ridge Regression and XGBoost prediction models deployed via Streamlit.</p>
                         <div class="tech-stack">
                             <span>Python</span>
+                            <span>Selenium</span>
                             <span>MongoDB</span>
                             <span>Scikit-Learn</span>
                             <span>Pandas</span>
-                            <span>Web Scraping</span>
                         </div>
                         <a href="https://github.com/khilo619/Htla2ee-Streamlit-app" target="_blank"
                             class="btn btn-outline btn-small mt-4">View Source</a>
@@ -302,14 +333,12 @@
                             <span class="project-tag">Systems</span>
                             <span class="project-tag">Architecture</span>
                         </div>
-                        <h3 class="project-title">Nand2Tetris</h3>
-                        <p class="project-desc">Tackling the fundamentals of computing by building a complete computer
-                            system from scratch. Starting from basic Nand gates, moving up to the hardware architecture,
-                            assembly language, and finally the software layer to run Tetris.</p>
+                        <h3 class="project-title">ALU Design Using HDL</h3>
+                        <p class="project-desc">Implemented <strong>15+ logic gates</strong> and designed an Arithmetic Logic Unit (ALU) supporting <strong>4 arithmetic and 3 logical operations</strong>. Achieved <strong>100% test coverage</strong> by simulating the design against provided test suites, ensuring accurate execution across all operations. Gained deep understanding of combinational logic and hardware design principles through the Nand2Tetris curriculum.</p>
                         <div class="tech-stack">
+                            <span>HDL</span>
                             <span>Assembly</span>
                             <span>Logic Design</span>
-                            <span>HDL</span>
                             <span>Architecture</span>
                         </div>
                         <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
@@ -350,6 +379,28 @@
                         <div class="tech-stack">
                             <span>Java</span>
                             <span>Java Swing</span>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
+                    </div>
+                </article>
+
+                <!-- Project 5: C++ Shell (In Progress) -->
+                <article class="project-card glass-card">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Systems</span>
+                            <span class="project-tag">OS</span>
+                        </div>
+                        <h3 class="project-title">
+                            C++ Command-Line Shell
+                            <span class="badge-wip">In Progress</span>
+                        </h3>
+                        <p class="project-desc">Building a command-line shell in C++ supporting <strong>piping, I/O redirection, and process management</strong> for <strong>10+ sample commands</strong>. Applies OS concepts including process control, file descriptors, and inter-process communication (IPC) to ensure robust, real-world shell functionality.</p>
+                        <div class="tech-stack">
+                            <span>C++</span>
+                            <span>OS Concepts</span>
+                            <span>IPC</span>
+                            <span>Process Control</span>
                         </div>
                         <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
                     </div>
