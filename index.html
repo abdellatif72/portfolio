@@ -5,12 +5,11 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Ahmed Abdellatif | Portfolio</title>
     <meta name="description" content="Portfolio of Ahmed (3blatif) Abdellatif, a Computer Science & Data Science Student passionate about problem-solving, algorithms, and software development.">
-    
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -18,517 +17,553 @@
                 extend: {
                     colors: {
                         "primary": "#1978e5",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#0a0c10",
+                        "background-dark": "#080b12",
                     },
                     fontFamily: {
                         "display": ["Inter", "sans-serif"],
                         "mono": ["JetBrains Mono", "monospace"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.5rem",
-                        "lg": "1rem",
-                        "xl": "1.5rem",
-                        "full": "9999px"
                     },
                 },
             },
         }
     </script>
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #080b12;
+            color: #e2e8f0;
+            overflow-x: hidden;
         }
-        .mono-text {
-            font-family: 'JetBrains Mono', monospace;
+
+        /* ── Mono ── */
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* ── Subtle grid lines ── */
+        .border-grid { border-color: rgba(255,255,255,0.07); }
+
+        /* ── Glassmorphism navbar ── */
+        .glass-nav {
+            background: rgba(8, 11, 18, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
-        .border-grid {
-            border-color: rgba(255, 255, 255, 0.1);
+
+        /* ── Hero ambient glow ── */
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(25,120,229,0.12) 0%, transparent 70%);
+            top: -100px;
+            right: -200px;
+            pointer-events: none;
+            z-index: 0;
         }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .hero-glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 70%);
+            bottom: 0;
+            left: -100px;
+            pointer-events: none;
+            z-index: 0;
         }
-        .marquee-container {
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            width: 100%;
+
+        /* ── Noise texture overlay ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
         }
+
+        /* ── Marquee ── */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; }
         .marquee-track {
             display: flex;
             width: max-content;
             animation: marquee 40s linear infinite;
         }
+        .marquee-track:hover { animation-play-state: paused; }
         .skill-pill {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            margin: 0 0.5rem;
-            background: rgba(25, 120, 229, 0.05);
-            border: 1px solid rgba(25, 120, 229, 0.1);
+            padding: 0.6rem 1.25rem;
+            margin: 0 0.4rem;
+            background: rgba(25,120,229,0.06);
+            border: 1px solid rgba(25,120,229,0.15);
             border-radius: 9999px;
             color: #94a3b8;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
         }
-        .marquee-track:hover {
-            animation-play-state: paused;
+        .skill-pill:hover {
+            background: rgba(25,120,229,0.14);
+            border-color: rgba(25,120,229,0.4);
+            color: #e2e8f0;
         }
 
-        /* Journey Timeline Styles */
+        /* ── Timeline ── */
         .timeline-line {
             position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #1978e5, transparent);
-            opacity: 0.2;
+            left: 15px; top: 0; bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, #1978e5 0%, rgba(25,120,229,0.1) 100%);
+        }
+
+        /* ── Stat card ── */
+        .stat-card {
+            transition: background 0.2s ease;
+        }
+        .stat-card:hover { background: rgba(255,255,255,0.03); }
+
+        /* ── Project card ── */
+        .project-card {
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
+        .project-card:hover {
+            background: rgba(25,120,229,0.06);
+            border-color: rgba(25,120,229,0.2);
+        }
+        .project-card .tag {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+        }
+
+        /* ── CP platform card ── */
+        .platform-card {
+            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255,255,255,0.025);
+            border-radius: 1.25rem;
+            transition: all 0.25s ease;
+        }
+        .platform-card:hover {
+            border-color: rgba(25,120,229,0.3);
+            background: rgba(25,120,229,0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(25,120,229,0.1);
+        }
+
+        /* ── Accomplishment row ── */
+        .accom-row {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 1.5rem;
+            transition: opacity 0.2s;
+        }
+        .accom-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+        /* ── Contact card ── */
+        .contact-link {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 0.875rem;
+            transition: all 0.2s ease;
+        }
+        .contact-link:hover {
+            background: rgba(25,120,229,0.08);
+            border-color: rgba(25,120,229,0.25);
+            transform: translateY(-2px);
+        }
+
+        /* ── Fade-in on scroll ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Section label ── */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #1978e5;
+            margin-bottom: 1rem;
+        }
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1px;
+            background: #1978e5;
+        }
+
+        /* ── Gradient text on hero ── */
+        .gradient-title {
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
-    <div class="max-w-5xl mx-auto px-6 lg:px-12">
-        <!-- Navigation -->
-        <nav class="flex items-center justify-between py-10 border-b border-grid">
-            <div class="flex items-center gap-3">
-                <span class="font-bold tracking-tight text-2xl">3blatif<span class="text-primary">.</span></span>
-            </div>
-            <div class="hidden md:flex items-center gap-8 mono-text text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                <a class="hover:text-primary transition-colors" href="#journey">Journey</a>
-                <a class="hover:text-primary transition-colors" href="#skills">Skills</a>
-                <a class="hover:text-primary transition-colors" href="#projects">Projects</a>
-                <a class="hover:text-primary transition-colors" href="#contact" class="bg-primary text-white px-5 py-2 rounded-lg font-bold hover:opacity-90 transition-opacity">Contact</a>
-            </div>
-        </nav>
+<body>
 
-        <!-- Hero Section -->
-        <header class="py-20 border-b border-grid">
-            <div class="max-w-3xl">
-                <p class="mono-text text-primary text-sm font-medium mb-6 uppercase tracking-widest">Computer Science &amp; Data Science</p>
-                <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
-                    Building <br/>
-                    <span class="text-slate-400 text-5xl md:text-7xl block my-2">intelligent</span>
-                    systems.
-                </h1>
-                <p class="text-xl text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl">
-                    If I could work on one type of problem for the rest of my life, it would be solving problems using software — no matter the stack. I turn data into stories, build robust logic, and thrive in competitive programming.
-                </p>
-                <div class="mt-10 flex gap-4">
-                    <a href="#projects" class="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">View Projects</a>
-                    <a href="#journey" class="border border-grid px-6 py-3 rounded-lg font-bold hover:bg-white/5 transition-colors">My Story</a>
-                </div>
-            </div>
-        </header>
-
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 border-b border-grid">
-            <div class="p-8 border-r border-grid flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
-                <div>
-                    <span class="material-symbols-outlined text-primary mb-4">school</span>
-                    <p class="text-sm mono-text text-slate-500 dark:text-slate-400 mb-1">Academic Standing</p>
-                    <h3 class="text-3xl font-bold">3.5 CGPA</h3>
-                </div>
-                <p class="text-xs mt-4 mono-text uppercase tracking-tighter">Bachelor's Student</p>
-            </div>
-            <div class="p-8 border-r border-grid flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
-                <div>
-                    <span class="material-symbols-outlined text-primary mb-4">terminal</span>
-                    <p class="text-sm mono-text text-slate-500 dark:text-slate-400 mb-1">Development</p>
-                    <h3 class="text-3xl font-bold">15+ Projects</h3>
-                </div>
-                <p class="text-xs mt-4 mono-text uppercase tracking-tighter">Cross-stack expertise</p>
-            </div>
-            <div class="p-8 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
-                <div>
-                    <span class="material-symbols-outlined text-primary mb-4">work_history</span>
-                    <p class="text-sm mono-text text-slate-500 dark:text-slate-400 mb-1">Solved Problems</p>
-                    <h3 class="text-3xl font-bold">1,350+</h3>
-                </div>
-                <p class="text-xs mt-4 mono-text uppercase tracking-tighter">Codeforces Rank: Specialist</p>
+    <!-- ══════════════════════════════════════
+         STICKY NAV
+    ══════════════════════════════════════ -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-5xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
+            <a href="#" class="font-bold text-2xl tracking-tight">3blatif<span style="color:#1978e5">.</span></a>
+            <div class="hidden md:flex items-center gap-8 mono text-xs uppercase tracking-widest text-slate-500">
+                <a class="hover:text-white transition-colors" href="#skills">Skills</a>
+                <a class="hover:text-white transition-colors" href="#projects">Projects</a>
+                <a class="hover:text-white transition-colors" href="#cp">Competitive</a>
+                <a href="#contact" class="px-4 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all font-semibold" style="border-color:rgba(25,120,229,0.35)">Contact</a>
             </div>
         </div>
+    </nav>
 
-        <!-- Journey Section -->
-        <section class="py-20 border-b border-grid" id="journey">
-            <div class="flex flex-col md:flex-row gap-12">
-                <div class="md:w-1/3">
-                    <h2 class="text-sm mono-text uppercase tracking-[0.2em] text-slate-400 mb-4">My Journey</h2>
-                    <h3 class="text-4xl font-black tracking-tight leading-tight">Obsession <br/><span class="text-primary">to Mastery.</span></h3>
-                    <p class="mt-6 text-slate-500 dark:text-slate-400 leading-relaxed">
-                        From a simple login page assignment to solving complex algorithmic challenges. Here is how it all happened.
-                    </p>
-                </div>
-                <div class="md:w-2/3 relative space-y-12 pl-10">
-                    <div class="timeline-line"></div>
-                    
-                    <!-- Journey Item 1 -->
-                    <div class="relative">
-                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
-                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">01 / The Spark</span>
-                        <h4 class="text-xl font-bold mb-3">One HTML Assignment Changed Everything</h4>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-                            Middle school. "Introduction to Computer." Build a login page. That homework turned into obsession — weekends spent tweaking CSS, fixing bugs, learning templates. It never stopped.
-                        </p>
-                    </div>
-
-                    <!-- Journey Item 2 -->
-                    <div class="relative">
-                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
-                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">02 / The Shift</span>
-                        <h4 class="text-xl font-bold mb-3">CS50x &amp; the Algorithmic Turn</h4>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-                            High school. Enrolled in CS50x. Switched from templates to algorithms. C → C++. CodeWars: <span class="text-primary font-bold">300+ problems</span>. That's when I discovered my drug: solving hard problems with pure logic.
-                        </p>
-                    </div>
-
-                    <!-- Journey Item 3 -->
-                    <div class="relative">
-                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
-                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">03 / The Grind</span>
-                        <h4 class="text-xl font-bold mb-3">Codeforces, University &amp; Full Speed</h4>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-                            University brought Codeforces. <span class="text-primary font-bold">1,350+ problems</span>. <span class="text-primary font-bold">23-day streak</span>. ICPC, ECPC, IEEEXtreme. Built foundations in Algorithms, DS, OOP, OS, Networks, ML, AI.
-                        </p>
-                    </div>
-
-                    <!-- Journey Item 4 -->
-                    <div class="relative">
-                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
-                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">04 / The Expansion</span>
-                        <h4 class="text-xl font-bold mb-3">Data Science &amp; Mobile</h4>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-                            Data analysis, web scraping, ML, PowerBI. Team projects. Then: Digital Egypt Pioneers Initiative — Flutter track. "Code once, run everywhere." Now building real products in the mobile ecosystem.
-                        </p>
-                    </div>
-
-                    <!-- Journey Item 5 -->
-                    <div class="relative">
-                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
-                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">05 / The Constant</span>
-                        <h4 class="text-xl font-bold mb-3">The Problem Is the Prize</h4>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-                            One type of problem for the rest of my life? <span class="text-primary font-bold">Solving problems with software.</span> Stack, domain, complexity — irrelevant. The challenge is the prize. That's my constant.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="py-20 border-b border-grid" id="skills">
-            <div class="py-12 space-y-12">
-                <div class="mb-10 text-center">
-                    <h2 class="text-sm mono-text uppercase tracking-[0.2em] text-slate-400 mb-2">Technical Skills</h2>
-                    <h3 class="text-4xl font-black tracking-tight">The Foundation.</h3>
-                </div>
-                
-                <!-- Data Science Row -->
-                <div class="space-y-4">
-                    <h3 class="text-xs mono-text text-primary uppercase tracking-widest px-1">Data Science</h3>
-                    <div class="marquee-container">
-                        <div class="marquee-track">
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">analytics</span> Python</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">query_stats</span> R</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">database</span> SQL</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">psychology</span> Scikit-learn</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">table_chart</span> Pandas</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">bar_chart</span> PowerBI</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">monitoring</span> Streamlit</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">show_chart</span> Matplotlib</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">bubble_chart</span> Seaborn</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">hub</span> Machine Learning</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">functions</span> Statistics</div>
-                            <!-- Duplicate for smooth loop -->
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">analytics</span> Python</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">query_stats</span> R</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">database</span> SQL</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">psychology</span> Scikit-learn</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">table_chart</span> Pandas</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Computer Science Row -->
-                <div class="space-y-4">
-                    <h3 class="text-xs mono-text text-primary uppercase tracking-widest px-1">Computer Science</h3>
-                    <div class="marquee-container">
-                        <div class="marquee-track" style="animation-direction: reverse;">
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">terminal</span> C++</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">code</span> Java</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">account_tree</span> Algorithms</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">grid_view</span> Data Structures</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">category</span> OOP</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">architecture</span> System Design</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">memory</span> Operating Systems</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">storage</span> Database Systems</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">lan</span> Computer Networking</div>
-                            <!-- Duplicate -->
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">terminal</span> C++</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">code</span> Java</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">account_tree</span> Algorithms</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mobile Development Row -->
-                <div class="space-y-4">
-                    <h3 class="text-xs mono-text text-primary uppercase tracking-widest px-1">Mobile Development</h3>
-                    <div class="marquee-container">
-                        <div class="marquee-track">
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">phone_iphone</span> Dart</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">flutter</span> Flutter</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">cloud</span> Firebase</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">published_with_changes</span> Provider</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">layers</span> BLoC</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">smart_toy</span> AI integration</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">api</span> REST API</div>
-                            <!-- Duplicate -->
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">phone_iphone</span> Dart</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">flutter</span> Flutter</div>
-                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">cloud</span> Firebase</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section class="py-20 border-b border-grid" id="projects">
-            <div class="flex items-end justify-between mb-16">
-                <h2 class="text-5xl font-black tracking-tight">Selected <br/> Projects.</h2>
-                <a class="mono-text text-sm text-primary hover:underline" href="https://github.com/abdellatif72">View all projects (15+)</a>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-grid overflow-hidden">
-                <!-- Project 1 -->
-                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-r border-b border-grid hover:bg-slate-900/30 transition-colors">
-                    <div>
-                        <div class="flex justify-between items-start mb-12">
-                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">01 / Data Science / ML</span>
-                            <a href="https://github.com/khilo619/Htla2ee-Streamlit-app" target="_blank"><span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span></a>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-4">Htla2ee: Car Market Explorer</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Scraped 11K+ listings from Egypt's largest used car marketplace, extracting 8 key attributes per listing. Cleaned 100% of records and built predictive Ridge and XGBoost pricing models deployed via Streamlit.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Python</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">XGBoost</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Selenium</span>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-b border-grid hover:bg-slate-900/30 transition-colors">
-                    <div>
-                        <div class="flex justify-between items-start mb-12">
-                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">02 / Systems / Architecture</span>
-                            <span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-4">ALU Design Using HDL</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Implemented 15+ logic gates and an ALU supporting 7 operations. Achieved 100% test coverage by simulating the design against provided test suites, ensuring accurate execution across all operations.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">HDL</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Assembly</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Nand2Tetris</span>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-r border-b border-grid hover:bg-slate-900/30 transition-colors">
-                    <div>
-                        <div class="flex justify-between items-start mb-12">
-                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">03 / Data Mining</span>
-                            <span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-4">R-U-Ready Dashboard</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Interactive Shiny application for analyzing transaction data. Features K-means clustering for segmentation and Apriori association rule mining to discover patterns in spending behavior.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">R</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Shiny</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Clustering</span>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-b border-grid hover:bg-slate-900/30 transition-colors">
-                    <div>
-                        <div class="flex justify-between items-start mb-12">
-                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">04 / Java Dev</span>
-                            <span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-4">ATM Application</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">A Java-based graphical simulator for ATM functionalities. Built with Java Swing, demonstrating robust input validation, error handling, and iterative software development practices.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Java</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Swing</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">OOP</span>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-r border-grid hover:bg-slate-900/30 transition-colors">
-                    <div>
-                        <div class="flex justify-between items-start mb-12">
-                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">05 / Mobile Dev</span>
-                            <a href="https://github.com/abdellatif72/Todo-List" target="_blank"><span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span></a>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-4">Flutter Todo List</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Lightweight task management application utilizing the provider package for state management to keep logic decoupled from UI. Native feel on both mobile and web.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Dart</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Flutter</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Provider</span>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] hover:bg-slate-900/30 transition-colors">
-                    <div>
-                        <div class="flex justify-between items-start mb-12">
-                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">06 / Systems / OS</span>
-                            <span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-4">C++ CLI Shell</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">A command-line shell supporting process control, file descriptors, and inter-process communication (IPC). Implements piping and I/O redirection for robust functionality.</p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">C++</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Unix API</span>
-                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">OS Concepts</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Competitive Programming Section -->
-        <section class="py-20 border-b border-grid" id="cp">
-            <div class="mb-16">
-                <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-6">Competitive Programming:<br/><span class="text-primary">Where Obsession Meets Discipline</span></h2>
-                <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
-                    The most consistent habit of my journey. 1,350+ problems solved. 23 consecutive days of competitive grinding.
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <header class="relative min-h-screen flex items-center border-b border-grid overflow-hidden pt-16">
+        <div class="hero-glow"></div>
+        <div class="hero-glow-2"></div>
+        <div class="max-w-5xl mx-auto px-6 lg:px-12 w-full relative z-10 py-24">
+            <div class="max-w-3xl fade-up visible">
+                <p class="section-label">Computer Science &amp; Data Science</p>
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.88] mb-8">
+                    <span class="gradient-title">Building</span><br/>
+                    <span class="text-slate-600 text-5xl md:text-7xl block my-3">intelligent</span>
+                    <span class="gradient-title">systems.</span>
+                </h1>
+                <p class="text-lg text-slate-400 leading-relaxed max-w-xl mb-10">
+                    If I could work on one type of problem for the rest of my life, it would be solving problems using software — no matter the stack. I turn data into stories, build robust logic, and thrive in competitive programming.
                 </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Codeforces Card -->
-                <div class="p-8 border border-grid bg-background-dark group hover:bg-slate-900/30 transition-all rounded-xl">
-                    <div class="flex justify-between items-start mb-8">
-                        <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                            <svg class="size-6 fill-primary" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">  <title>Codeforces</title> <path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 0.828 -0.672 1.5 -1.5 1.5h-3C0.673 21 0 20.328 0 19.5V9c0 -0.828 0.673 -1.5 1.5 -1.5h3zm9 -4.5c0.828 0 1.5 0.672 1.5 1.5v15c0 0.828 -0.672 1.5 -1.5 1.5h-3c-0.827 0 -1.5 -0.672 -1.5 -1.5v-15c0 -0.828 0.673 -1.5 1.5 -1.5h3zm9 7.5c0.828 0 1.5 0.672 1.5 1.5v7.5c0 0.828 -0.672 1.5 -1.5 1.5h-3c-0.828 0 -1.5 -0.672 -1.5 -1.5V12c0 -0.828 0.672 -1.5 1.5 -1.5h3z"></path> </svg>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-[10px] mono-text uppercase tracking-widest text-[#00FFFF]">Specialist</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Codeforces (@3blatif)</h3>
-                    <p class="mono-text text-sm text-primary mb-6">1,350+ problems solved • 23-day streak</p>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8">
-                        This isn't just a profile — it's a chronicle of obsession. Codeforces is where I discovered that problem-solving is my true passion. Proud participant in ICPC, ECPC, and IEEEXtreme. Currently mentoring the next generation of competitive programmers.
-                    </p>
-                    <a class="inline-flex items-center gap-2 mono-text text-sm font-bold uppercase tracking-wider text-slate-400 hover:text-primary transition-colors" href="https://codeforces.com/profile/3blatif" target="_blank">
-                        View Profile <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </a>
+                <div class="flex gap-4 flex-wrap">
+                    <a href="#projects" class="px-6 py-3 rounded-xl font-bold text-sm text-white transition-all hover:brightness-110 hover:-translate-y-0.5" style="background: linear-gradient(135deg, #1978e5, #2563eb); box-shadow: 0 0 30px rgba(25,120,229,0.3);">View Projects</a>
+                    <a href="#cp" class="px-6 py-3 rounded-xl font-bold text-sm border border-grid hover:border-white/20 hover:bg-white/5 transition-all">Competitive</a>
                 </div>
+            </div>
+        </div>
+    </header>
 
-                <!-- LeetCode Card -->
-                <div class="p-8 border border-grid bg-background-dark group hover:bg-slate-900/30 transition-all rounded-xl">
-                    <div class="flex justify-between items-start mb-8">
-                        <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                            <svg class="size-6 fill-primary" viewbox="0 0 640 640" xmlns="http://www.w3.org/2000/svg"><path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"></path></svg>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">LeetCode (@ahmedabdellatif1)</h3>
-                    <p class="mono-text text-sm text-primary mb-6">DSA Training Ground</p>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8">
-                        My Data Structures & Algorithms training ground. Showcasing consistency, interview-prep discipline, streaks, and competitive coding speed during global developer challenges.
-                    </p>
-                    <a class="inline-flex items-center gap-2 mono-text text-sm font-bold uppercase tracking-wider text-slate-400 hover:text-primary transition-colors" href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank">
-                        View Profile <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+    <!-- ══════════════════════════════════════
+         STATS STRIP
+    ══════════════════════════════════════ -->
+    <div class="max-w-5xl mx-auto px-6 lg:px-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 border-b border-grid divide-y md:divide-y-0 md:divide-x divide-white/[0.07]">
 
-        <!-- Accomplishments Section -->
-        <section class="py-20 border-b border-grid">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div class="md:col-span-1">
-                    <h2 class="text-sm mono-text uppercase tracking-[0.2em] text-slate-400">Accomplishments</h2>
-                </div>
-                <div class="md:col-span-3 space-y-8">
-                    <div class="flex gap-6 items-start">
-                        <span class="mono-text text-primary text-sm">CP</span>
-                        <div>
-                            <h4 class="font-bold text-lg">Competitive Programming</h4>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm">1,350+ problems solved on Codeforces. Active participant in ICPC and ECPC regional competitions.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6 items-start">
-                        <span class="mono-text text-primary text-sm">LDR</span>
-                        <div>
-                            <h4 class="font-bold text-lg">Mentoring &amp; Leadership</h4>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm">Mentoring junior developers and leading technical workshops on data-driven product design.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-6 items-start">
-                        <span class="mono-text text-primary text-sm">EDU</span>
-                        <div>
-                            <h4 class="font-bold text-lg">Continuous Learning</h4>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm">Deep diving into system design and advanced algorithms to build better software products.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="stat-card p-8 fade-up">
+                <span class="material-symbols-outlined text-primary block mb-3" style="color:#1978e5">school</span>
+                <p class="text-xs mono text-slate-500 uppercase tracking-widest mb-1">Academic Standing</p>
+                <h3 class="text-3xl font-bold mb-3">3.5 CGPA</h3>
+                <p class="text-xs mono text-slate-600 uppercase tracking-wider">Bachelor's Student</p>
             </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section class="py-20 border-b border-grid" id="contact">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-5xl font-black tracking-tight mb-6">Get in <br/> touch.</h2>
-                    <p class="text-xl text-slate-500 dark:text-slate-400 max-w-sm">
-                        Always open to collaborating on innovative projects or discussing opportunities in AI and Backend Systems.
-                    </p>
-                </div>
-                <div class="space-y-4">
-                    <a class="flex items-center justify-between p-6 bg-primary/5 border border-primary/10 rounded-xl group hover:bg-primary/10 transition-all" href="mailto:ahmedmoabdellatif1@gmail.com">
-                        <div class="flex items-center gap-4">
-                            <span class="material-symbols-outlined text-primary">mail</span>
-                            <span class="font-bold text-lg">Email Me</span>
-                        </div>
-                        <span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">arrow_outward</span>
-                    </a>
-                    <div class="grid grid-cols-2 gap-4">
-                        <a class="flex items-center gap-3 p-4 border border-grid rounded-xl hover:bg-slate-900/50 transition-colors group" href="https://linkedin.com/in/abdellatif72" target="_blank">
-                            <span class="material-symbols-outlined text-primary text-xl">link</span>
-                            <span class="mono-text text-sm font-bold uppercase tracking-wider">LinkedIn</span>
-                        </a>
-                        <a class="flex items-center gap-3 p-4 border border-grid rounded-xl hover:bg-slate-900/50 transition-colors group" href="https://github.com/abdellatif72" target="_blank">
-                            <span class="material-symbols-outlined text-primary text-xl">terminal</span>
-                            <span class="mono-text text-sm font-bold uppercase tracking-wider">GitHub</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="stat-card p-8 fade-up">
+                <span class="material-symbols-outlined block mb-3" style="color:#1978e5">terminal</span>
+                <p class="text-xs mono text-slate-500 uppercase tracking-widest mb-1">Development</p>
+                <h3 class="text-3xl font-bold mb-3">15+ Projects</h3>
+                <p class="text-xs mono text-slate-600 uppercase tracking-wider">Cross-stack expertise</p>
             </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="mono-text text-xs text-slate-500">
-                © 2026 Ahmed Abdellatif. Built with precision.
+            <div class="stat-card p-8 fade-up">
+                <span class="material-symbols-outlined block mb-3" style="color:#1978e5">work_history</span>
+                <p class="text-xs mono text-slate-500 uppercase tracking-widest mb-1">Solved Problems</p>
+                <h3 class="text-3xl font-bold mb-3">1,350+</h3>
+                <p class="text-xs mono text-slate-600 uppercase tracking-wider">Codeforces · Specialist</p>
             </div>
-            <div class="flex gap-8 mono-text text-xs uppercase tracking-widest">
-                <a class="hover:text-primary transition-colors" href="https://linkedin.com/in/abdellatif72" target="_blank">LinkedIn</a>
-                <a class="hover:text-primary transition-colors" href="https://github.com/abdellatif72" target="_blank">GitHub</a>
-                <a class="hover:text-primary transition-colors" href="#">Twitter</a>
-            </div>
-        </footer>
+
+        </div>
     </div>
+
+
+
+    <!-- ══════════════════════════════════════
+         SKILLS
+    ══════════════════════════════════════ -->
+    <section class="max-w-5xl mx-auto px-6 lg:px-12 py-24 border-b border-grid" id="skills">
+        <div class="text-center mb-16 fade-up">
+            <p class="section-label justify-center">Technical Skills</p>
+            <h2 class="text-4xl font-black tracking-tight">The Foundation.</h2>
+        </div>
+
+        <div class="space-y-10">
+            <div class="space-y-3 fade-up">
+                <h3 class="mono text-[10px] uppercase tracking-[0.2em] text-slate-500 px-1">Data Science</h3>
+                <div class="marquee-container">
+                    <div class="marquee-track">
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">analytics</span> Python</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">query_stats</span> R</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">database</span> SQL</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">psychology</span> Scikit-learn</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">table_chart</span> Pandas</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">bar_chart</span> PowerBI</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">monitoring</span> Streamlit</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">show_chart</span> Matplotlib</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">bubble_chart</span> Seaborn</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">hub</span> Machine Learning</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">functions</span> Statistics</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">analytics</span> Python</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">query_stats</span> R</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">database</span> SQL</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">psychology</span> Scikit-learn</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">table_chart</span> Pandas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3 fade-up">
+                <h3 class="mono text-[10px] uppercase tracking-[0.2em] text-slate-500 px-1">Computer Science</h3>
+                <div class="marquee-container">
+                    <div class="marquee-track" style="animation-direction: reverse;">
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">terminal</span> C++</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">code</span> Java</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">account_tree</span> Algorithms</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">grid_view</span> Data Structures</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">category</span> OOP</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">architecture</span> System Design</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">memory</span> Operating Systems</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">storage</span> Database Systems</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">lan</span> Computer Networking</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">terminal</span> C++</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">code</span> Java</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">account_tree</span> Algorithms</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3 fade-up">
+                <h3 class="mono text-[10px] uppercase tracking-[0.2em] text-slate-500 px-1">Mobile Development</h3>
+                <div class="marquee-container">
+                    <div class="marquee-track">
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">phone_iphone</span> Dart</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">flutter</span> Flutter</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">cloud</span> Firebase</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">published_with_changes</span> Provider</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">layers</span> BLoC</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">smart_toy</span> AI integration</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">api</span> REST API</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">phone_iphone</span> Dart</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">flutter</span> Flutter</div>
+                        <div class="skill-pill"><span class="material-symbols-outlined text-sm" style="color:#1978e5">cloud</span> Firebase</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         PROJECTS
+    ══════════════════════════════════════ -->
+    <section class="max-w-5xl mx-auto px-6 lg:px-12 py-24 border-b border-grid" id="projects">
+        <div class="flex items-end justify-between mb-14 fade-up">
+            <div>
+                <p class="section-label">Selected Work</p>
+                <h2 class="text-5xl font-black tracking-tight">Projects.</h2>
+            </div>
+            <a class="mono text-xs text-slate-500 hover:text-white transition-colors tracking-widest uppercase" href="https://github.com/abdellatif72" target="_blank">View all →</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <!-- Project 1: Htla2ee -->
+            <div class="project-card rounded-2xl p-7 flex flex-col justify-between min-h-[340px] fade-up">
+                <div>
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="mono text-[10px] text-slate-600 uppercase tracking-widest">01 / Data Science</span>
+                        <a href="https://github.com/khilo619/Htla2ee-Streamlit-app" target="_blank">
+                            <span class="material-symbols-outlined text-slate-600 hover:text-white transition-colors text-lg">arrow_outward</span>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Htla2ee: Car Market Explorer</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Scraped 11K+ listings from Egypt's largest used car marketplace. Cleaned 100% of records and built predictive Ridge and XGBoost pricing models deployed via Streamlit.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Selenium</span>
+                </div>
+            </div>
+
+            <!-- Project 2: ALU -->
+            <div class="project-card rounded-2xl p-7 flex flex-col justify-between min-h-[340px] fade-up">
+                <div>
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="mono text-[10px] text-slate-600 uppercase tracking-widest">02 / Systems</span>
+                        <span class="material-symbols-outlined text-slate-600 text-lg">arrow_outward</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">ALU Design Using HDL</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Implemented 15+ logic gates and an ALU supporting 7 operations. Achieved 100% test coverage by simulating the design against provided test suites.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag">HDL</span><span class="tag">Assembly</span><span class="tag">Nand2Tetris</span>
+                </div>
+            </div>
+
+            <!-- Project 3: Flutter Todo -->
+            <div class="project-card rounded-2xl p-7 flex flex-col justify-between min-h-[340px] fade-up">
+                <div>
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="mono text-[10px] text-slate-600 uppercase tracking-widest">03 / Mobile Dev</span>
+                        <a href="https://github.com/abdellatif72/Todo-List" target="_blank">
+                            <span class="material-symbols-outlined text-slate-600 hover:text-white transition-colors text-lg">arrow_outward</span>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Flutter Todo List</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Lightweight task management application utilizing the provider package for state management. Native feel on both mobile and web.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag">Dart</span><span class="tag">Flutter</span><span class="tag">Provider</span>
+                </div>
+            </div>
+
+            <!-- Project 4: C++ CLI Shell -->
+            <div class="project-card rounded-2xl p-7 flex flex-col justify-between min-h-[340px] fade-up">
+                <div>
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="mono text-[10px] text-slate-600 uppercase tracking-widest">04 / Systems / OS</span>
+                        <span class="material-symbols-outlined text-slate-600 text-lg">arrow_outward</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">C++ CLI Shell</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">A command-line shell supporting process control, file descriptors, and inter-process communication (IPC). Implements piping and I/O redirection for robust functionality.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag">C++</span><span class="tag">Unix API</span><span class="tag">OS Concepts</span>
+                    <span class="tag" style="color:#f59e0b; border-color:rgba(245,158,11,0.3); background:rgba(245,158,11,0.07)">⏳ In Progress</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         COMPETITIVE PROGRAMMING
+    ══════════════════════════════════════ -->
+    <section class="max-w-5xl mx-auto px-6 lg:px-12 py-24 border-b border-grid" id="cp">
+        <div class="fade-up mb-14">
+            <p class="section-label">Competitive Programming</p>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">Where Obsession <br/><span style="color:#1978e5">Meets Discipline.</span></h2>
+            <p class="text-slate-400 max-w-xl leading-relaxed">The most consistent habit of my journey. 1,350+ problems solved. 23 consecutive days of competitive grinding.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Codeforces Card -->
+            <div class="platform-card p-8 fade-up">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(25,120,229,0.12)">
+                        <svg class="w-6 h-6" style="fill:#1978e5" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <title>Codeforces</title>
+                            <path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 0.828-0.672 1.5-1.5 1.5h-3C0.673 21 0 20.328 0 19.5V9c0-0.828 0.673-1.5 1.5-1.5h3zm9-4.5c0.828 0 1.5 0.672 1.5 1.5v15c0 0.828-0.672 1.5-1.5 1.5h-3c-0.827 0-1.5-0.672-1.5-1.5v-15c0-0.828 0.673-1.5 1.5-1.5h3zm9 7.5c0.828 0 1.5 0.672 1.5 1.5v7.5c0 0.828-0.672 1.5-1.5 1.5h-3c-0.828 0-1.5-0.672-1.5-1.5V12c0-0.828 0.672-1.5 1.5-1.5h3z"/>
+                        </svg>
+                    </div>
+                    <span class="mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full" style="color:#00FFFF; background:rgba(0,255,255,0.07); border:1px solid rgba(0,255,255,0.2)">Specialist</span>
+                </div>
+                <h3 class="text-xl font-bold mb-1">Codeforces</h3>
+                <p class="mono text-xs mb-1" style="color:#1978e5">@3blatif</p>
+                <p class="mono text-xs text-slate-500 mb-5">1,350+ problems solved • 23-day streak</p>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">This isn't just a profile — it's a chronicle of obsession. Codeforces is where I discovered that problem-solving is my true passion. Proud participant in ICPC, ECPC, and IEEEXtreme. Currently mentoring the next generation of competitive programmers.</p>
+                <a class="inline-flex items-center gap-2 mono text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-white transition-colors" href="https://codeforces.com/profile/3blatif" target="_blank">
+                    View Profile <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                </a>
+            </div>
+
+            <!-- LeetCode Card -->
+            <div class="platform-card p-8 fade-up">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(25,120,229,0.12)">
+                        <svg class="w-6 h-6" style="fill:#1978e5" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold mb-1">LeetCode</h3>
+                <p class="mono text-xs mb-1" style="color:#1978e5">@ahmedabdellatif1</p>
+                <p class="mono text-xs text-slate-500 mb-5">DSA Training Ground</p>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">My Data Structures &amp; Algorithms training ground. Showcasing consistency, interview-prep discipline, streaks, and competitive coding speed during global developer challenges.</p>
+                <a class="inline-flex items-center gap-2 mono text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-white transition-colors" href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank">
+                    View Profile <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ══════════════════════════════════════
+         CONTACT
+    ══════════════════════════════════════ -->
+    <section class="max-w-5xl mx-auto px-6 lg:px-12 py-24 border-b border-grid" id="contact">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="fade-up">
+                <p class="section-label">Contact</p>
+                <h2 class="text-5xl font-black tracking-tight mb-6">Get in <br/> touch.</h2>
+                <p class="text-slate-400 max-w-sm leading-relaxed">Always open to collaborating on innovative projects or discussing opportunities in AI and Backend Systems.</p>
+            </div>
+            <div class="space-y-3 fade-up">
+                <a class="contact-link flex items-center justify-between p-5 block" href="mailto:ahmedmoabdellatif1@gmail.com">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined" style="color:#1978e5">mail</span>
+                        <span class="font-bold">Email Me</span>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-600 group-hover:text-white transition-colors">arrow_outward</span>
+                </a>
+                <div class="grid grid-cols-2 gap-3">
+                    <a class="contact-link flex items-center gap-3 p-4" href="https://linkedin.com/in/abdellatif72" target="_blank">
+                        <span class="material-symbols-outlined text-lg" style="color:#1978e5">link</span>
+                        <span class="mono text-xs font-bold uppercase tracking-wider">LinkedIn</span>
+                    </a>
+                    <a class="contact-link flex items-center gap-3 p-4" href="https://github.com/abdellatif72" target="_blank">
+                        <span class="material-symbols-outlined text-lg" style="color:#1978e5">terminal</span>
+                        <span class="mono text-xs font-bold uppercase tracking-wider">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer class="max-w-5xl mx-auto px-6 lg:px-12 py-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <span class="font-bold text-lg tracking-tight">3blatif<span style="color:#1978e5">.</span></span>
+        <p class="mono text-xs text-slate-600">© 2026 Ahmed Abdellatif. Built with precision.</p>
+        <div class="flex gap-6 mono text-xs uppercase tracking-widest text-slate-600">
+            <a class="hover:text-white transition-colors" href="https://linkedin.com/in/abdellatif72" target="_blank">LinkedIn</a>
+            <a class="hover:text-white transition-colors" href="https://github.com/abdellatif72" target="_blank">GitHub</a>
+            <a class="hover:text-white transition-colors" href="https://codeforces.com/profile/3blatif" target="_blank">Codeforces</a>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll-triggered fade-up animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
