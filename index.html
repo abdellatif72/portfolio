@@ -1,620 +1,534 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html class="dark" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3blatif. - Computer &amp; Data Science Student</title>
-    <meta name="description"
-        content="Portfolio of Ahmed (3blatif) Abdellatif, a Computer Science &amp; Data Science Student passionate about problem-solving, algorithms, and software development.">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Ahmed Abdellatif | Portfolio</title>
+    <meta name="description" content="Portfolio of Ahmed (3blatif) Abdellatif, a Computer Science & Data Science Student passionate about problem-solving, algorithms, and software development.">
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1978e5",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#0a0c10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
     <style>
-        /* Journey Cards */
-        .journey-cards {
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .border-grid {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+        }
+        .marquee-track {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-bottom: 40px;
+            width: max-content;
+            animation: marquee 40s linear infinite;
         }
-
-        .journey-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-        .journey-card-icon {
-            font-size: 2rem;
-            flex-shrink: 0;
-            line-height: 1;
-            margin-top: 4px;
-        }
-
-        .journey-card-body h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .journey-card-body p {
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        /* In-Progress Badge */
-        .badge-wip {
+        .skill-pill {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #f59e0b;
-            background: rgba(245, 158, 11, 0.12);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 999px;
-            padding: 3px 10px;
-            margin-left: 8px;
-            vertical-align: middle;
-        }
-
-        .badge-wip::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #f59e0b;
-            animation: pulse-dot 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.75); }
-        }
-
-        /* ── Social Icons (Contact Section) ── */
-        .social-links {
-            margin-top: 24px;
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 10px;
-            border: 1px solid #2a2a2a;
-            background-color: #1a1a1a;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.5rem;
+            background: rgba(25, 120, 229, 0.05);
+            border: 1px solid rgba(25, 120, 229, 0.1);
+            border-radius: 9999px;
             color: #94a3b8;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
         }
 
-        .social-icon svg {
-            flex-shrink: 0;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-        }
-
-        /* Codeforces – red */
-        .social-icon.cf-icon svg { color: #ea4335; }
-        .social-icon.cf-icon:hover {
-            border-color: #ea4335;
-            color: #ea4335;
-            box-shadow: 0 4px 16px rgba(234, 67, 53, 0.2);
-        }
-
-        /* LeetCode – amber */
-        .social-icon.lc-icon svg { color: #f89f1b; }
-        .social-icon.lc-icon:hover {
-            border-color: #f89f1b;
-            color: #f89f1b;
-            box-shadow: 0 4px 16px rgba(248, 159, 27, 0.2);
-        }
-
-        /* GitHub – silver */
-        .social-icon.gh-icon svg { color: #c9d1d9; }
-        .social-icon.gh-icon:hover {
-            border-color: #c9d1d9;
-            color: #c9d1d9;
-            box-shadow: 0 4px 16px rgba(201, 209, 217, 0.15);
-        }
-
-        /* LinkedIn – blue */
-        .social-icon.li-icon svg { color: #0a66c2; }
-        .social-icon.li-icon:hover {
-            border-color: #0a66c2;
-            color: #0a66c2;
-            box-shadow: 0 4px 16px rgba(10, 102, 194, 0.25);
+        /* Journey Timeline Styles */
+        .timeline-line {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #1978e5, transparent);
+            opacity: 0.2;
         }
     </style>
 </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="max-w-5xl mx-auto px-6 lg:px-12">
+        <!-- Navigation -->
+        <nav class="flex items-center justify-between py-10 border-b border-grid">
+            <div class="flex items-center gap-3">
+                <span class="font-bold tracking-tight text-2xl">3blatif<span class="text-primary">.</span></span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 mono-text text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                <a class="hover:text-primary transition-colors" href="#journey">Journey</a>
+                <a class="hover:text-primary transition-colors" href="#skills">Skills</a>
+                <a class="hover:text-primary transition-colors" href="#projects">Projects</a>
+                <a class="hover:text-primary transition-colors" href="#contact" class="bg-primary text-white px-5 py-2 rounded-lg font-bold hover:opacity-90 transition-opacity">Contact</a>
+            </div>
+        </nav>
 
-<body class="dark-theme">
-    <!-- Cursor Glow -->
-    <div id="cursor-glow"></div>
+        <!-- Hero Section -->
+        <header class="py-20 border-b border-grid">
+            <div class="max-w-3xl">
+                <p class="mono-text text-primary text-sm font-medium mb-6 uppercase tracking-widest">Computer Science &amp; Data Science</p>
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+                    Building <br/>
+                    <span class="text-slate-400 text-5xl md:text-7xl block my-2">intelligent</span>
+                    systems.
+                </h1>
+                <p class="text-xl text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl">
+                    If I could work on one type of problem for the rest of my life, it would be solving problems using software — no matter the stack. I turn data into stories, build robust logic, and thrive in competitive programming.
+                </p>
+                <div class="mt-10 flex gap-4">
+                    <a href="#projects" class="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">View Projects</a>
+                    <a href="#journey" class="border border-grid px-6 py-3 rounded-lg font-bold hover:bg-white/5 transition-colors">My Story</a>
+                </div>
+            </div>
+        </header>
 
-    <!-- Navigation -->
-    <nav class="navbar glass">
-        <div class="container nav-content">
-            <a href="#" class="logo">3blatif<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">My Journey</a></li>
-                <li><a href="#cp">Competitions</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact" class="btn btn-primary btn-small">Contact</a></li>
-            </ul>
-            <!-- Theme Toggle -->
-            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
-                <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-                <svg id="sun-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-            </button>
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 border-b border-grid">
+            <div class="p-8 border-r border-grid flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                <div>
+                    <span class="material-symbols-outlined text-primary mb-4">school</span>
+                    <p class="text-sm mono-text text-slate-500 dark:text-slate-400 mb-1">Academic Standing</p>
+                    <h3 class="text-3xl font-bold">3.5 CGPA</h3>
+                </div>
+                <p class="text-xs mt-4 mono-text uppercase tracking-tighter">Bachelor's Student</p>
+            </div>
+            <div class="p-8 border-r border-grid flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                <div>
+                    <span class="material-symbols-outlined text-primary mb-4">terminal</span>
+                    <p class="text-sm mono-text text-slate-500 dark:text-slate-400 mb-1">Development</p>
+                    <h3 class="text-3xl font-bold">15+ Projects</h3>
+                </div>
+                <p class="text-xs mt-4 mono-text uppercase tracking-tighter">Cross-stack expertise</p>
+            </div>
+            <div class="p-8 flex flex-col justify-between group hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                <div>
+                    <span class="material-symbols-outlined text-primary mb-4">work_history</span>
+                    <p class="text-sm mono-text text-slate-500 dark:text-slate-400 mb-1">Solved Problems</p>
+                    <h3 class="text-3xl font-bold">1,350+</h3>
+                </div>
+                <p class="text-xs mt-4 mono-text uppercase tracking-tighter">Codeforces Rank: Specialist</p>
+            </div>
         </div>
-    </nav>
 
-    <!-- Mobile Nav Overlay -->
-    <div class="mobile-nav-overlay glass">
-        <ul class="mobile-nav-links">
-            <li><a href="#about" class="mobile-link">My Journey</a></li>
-            <li><a href="#cp" class="mobile-link">Competitions</a></li>
-            <li><a href="#projects" class="mobile-link">Projects</a></li>
-            <li><a href="#contact" class="mobile-link btn btn-primary">Contact</a></li>
-        </ul>
+        <!-- Journey Section -->
+        <section class="py-20 border-b border-grid" id="journey">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/3">
+                    <h2 class="text-sm mono-text uppercase tracking-[0.2em] text-slate-400 mb-4">My Journey</h2>
+                    <h3 class="text-4xl font-black tracking-tight leading-tight">Obsession <br/><span class="text-primary">to Mastery.</span></h3>
+                    <p class="mt-6 text-slate-500 dark:text-slate-400 leading-relaxed">
+                        From a simple login page assignment to solving complex algorithmic challenges. Here is how it all happened.
+                    </p>
+                </div>
+                <div class="md:w-2/3 relative space-y-12 pl-10">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Journey Item 1 -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
+                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">01 / The Spark</span>
+                        <h4 class="text-xl font-bold mb-3">One HTML Assignment Changed Everything</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                            Middle school. "Introduction to Computer." Build a login page. That homework turned into obsession — weekends spent tweaking CSS, fixing bugs, learning templates. It never stopped.
+                        </p>
+                    </div>
+
+                    <!-- Journey Item 2 -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
+                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">02 / The Shift</span>
+                        <h4 class="text-xl font-bold mb-3">CS50x &amp; the Algorithmic Turn</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                            High school. Enrolled in CS50x. Switched from templates to algorithms. C → C++. CodeWars: <span class="text-primary font-bold">300+ problems</span>. That's when I discovered my drug: solving hard problems with pure logic.
+                        </p>
+                    </div>
+
+                    <!-- Journey Item 3 -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
+                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">03 / The Grind</span>
+                        <h4 class="text-xl font-bold mb-3">Codeforces, University &amp; Full Speed</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                            University brought Codeforces. <span class="text-primary font-bold">1,350+ problems</span>. <span class="text-primary font-bold">23-day streak</span>. ICPC, ECPC, IEEEXtreme. Built foundations in Algorithms, DS, OOP, OS, Networks, ML, AI.
+                        </p>
+                    </div>
+
+                    <!-- Journey Item 4 -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
+                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">04 / The Expansion</span>
+                        <h4 class="text-xl font-bold mb-3">Data Science &amp; Mobile</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                            Data analysis, web scraping, ML, PowerBI. Team projects. Then: Digital Egypt Pioneers Initiative — Flutter track. "Code once, run everywhere." Now building real products in the mobile ecosystem.
+                        </p>
+                    </div>
+
+                    <!-- Journey Item 5 -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 size-4 rounded-full bg-primary border-4 border-background-dark z-10"></div>
+                        <span class="mono-text text-xs text-primary uppercase tracking-widest block mb-2">05 / The Constant</span>
+                        <h4 class="text-xl font-bold mb-3">The Problem Is the Prize</h4>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                            One type of problem for the rest of my life? <span class="text-primary font-bold">Solving problems with software.</span> Stack, domain, complexity — irrelevant. The challenge is the prize. That's my constant.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="py-20 border-b border-grid" id="skills">
+            <div class="py-12 space-y-12">
+                <div class="mb-10 text-center">
+                    <h2 class="text-sm mono-text uppercase tracking-[0.2em] text-slate-400 mb-2">Technical Skills</h2>
+                    <h3 class="text-4xl font-black tracking-tight">The Foundation.</h3>
+                </div>
+                
+                <!-- Data Science Row -->
+                <div class="space-y-4">
+                    <h3 class="text-xs mono-text text-primary uppercase tracking-widest px-1">Data Science</h3>
+                    <div class="marquee-container">
+                        <div class="marquee-track">
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">analytics</span> Python</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">query_stats</span> R</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">database</span> SQL</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">psychology</span> Scikit-learn</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">table_chart</span> Pandas</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">bar_chart</span> PowerBI</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">monitoring</span> Streamlit</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">show_chart</span> Matplotlib</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">bubble_chart</span> Seaborn</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">hub</span> Machine Learning</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">functions</span> Statistics</div>
+                            <!-- Duplicate for smooth loop -->
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">analytics</span> Python</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">query_stats</span> R</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">database</span> SQL</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">psychology</span> Scikit-learn</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">table_chart</span> Pandas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer Science Row -->
+                <div class="space-y-4">
+                    <h3 class="text-xs mono-text text-primary uppercase tracking-widest px-1">Computer Science</h3>
+                    <div class="marquee-container">
+                        <div class="marquee-track" style="animation-direction: reverse;">
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">terminal</span> C++</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">code</span> Java</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">account_tree</span> Algorithms</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">grid_view</span> Data Structures</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">category</span> OOP</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">architecture</span> System Design</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">memory</span> Operating Systems</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">storage</span> Database Systems</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">lan</span> Computer Networking</div>
+                            <!-- Duplicate -->
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">terminal</span> C++</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">code</span> Java</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">account_tree</span> Algorithms</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Development Row -->
+                <div class="space-y-4">
+                    <h3 class="text-xs mono-text text-primary uppercase tracking-widest px-1">Mobile Development</h3>
+                    <div class="marquee-container">
+                        <div class="marquee-track">
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">phone_iphone</span> Dart</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">flutter</span> Flutter</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">cloud</span> Firebase</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">published_with_changes</span> Provider</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">layers</span> BLoC</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">smart_toy</span> AI integration</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">api</span> REST API</div>
+                            <!-- Duplicate -->
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">phone_iphone</span> Dart</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">flutter</span> Flutter</div>
+                            <div class="skill-pill"><span class="material-symbols-outlined text-primary">cloud</span> Firebase</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="py-20 border-b border-grid" id="projects">
+            <div class="flex items-end justify-between mb-16">
+                <h2 class="text-5xl font-black tracking-tight">Selected <br/> Projects.</h2>
+                <a class="mono-text text-sm text-primary hover:underline" href="https://github.com/abdellatif72">View all projects (15+)</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-grid overflow-hidden">
+                <!-- Project 1 -->
+                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-r border-b border-grid hover:bg-slate-900/30 transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">01 / Data Science / ML</span>
+                            <a href="https://github.com/khilo619/Htla2ee-Streamlit-app" target="_blank"><span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span></a>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">Htla2ee: Car Market Explorer</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Scraped 11K+ listings from Egypt's largest used car marketplace, extracting 8 key attributes per listing. Cleaned 100% of records and built predictive Ridge and XGBoost pricing models deployed via Streamlit.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Python</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">XGBoost</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Selenium</span>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-b border-grid hover:bg-slate-900/30 transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">02 / Systems / Architecture</span>
+                            <span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">ALU Design Using HDL</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Implemented 15+ logic gates and an ALU supporting 7 operations. Achieved 100% test coverage by simulating the design against provided test suites, ensuring accurate execution across all operations.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">HDL</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Assembly</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Nand2Tetris</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-r border-b border-grid hover:bg-slate-900/30 transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">03 / Data Mining</span>
+                            <span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">R-U-Ready Dashboard</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Interactive Shiny application for analyzing transaction data. Features K-means clustering for segmentation and Apriori association rule mining to discover patterns in spending behavior.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">R</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Shiny</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Clustering</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-b border-grid hover:bg-slate-900/30 transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">04 / Java Dev</span>
+                            <span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">ATM Application</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">A Java-based graphical simulator for ATM functionalities. Built with Java Swing, demonstrating robust input validation, error handling, and iterative software development practices.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Java</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Swing</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">OOP</span>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] border-r border-grid hover:bg-slate-900/30 transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">05 / Mobile Dev</span>
+                            <a href="https://github.com/abdellatif72/Todo-List" target="_blank"><span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span></a>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">Flutter Todo List</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Lightweight task management application utilizing the provider package for state management to keep logic decoupled from UI. Native feel on both mobile and web.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Dart</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Flutter</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Provider</span>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="bg-background-dark p-8 group flex flex-col justify-between min-h-[400px] hover:bg-slate-900/30 transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="mono-text text-xs text-slate-500 uppercase tracking-widest">06 / Systems / OS</span>
+                            <span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">arrow_outward</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">C++ CLI Shell</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">A command-line shell supporting process control, file descriptors, and inter-process communication (IPC). Implements piping and I/O redirection for robust functionality.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">C++</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">Unix API</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] mono-text uppercase text-slate-300">OS Concepts</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Competitive Programming Section -->
+        <section class="py-20 border-b border-grid" id="cp">
+            <div class="mb-16">
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-6">Competitive Programming:<br/><span class="text-primary">Where Obsession Meets Discipline</span></h2>
+                <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
+                    The most consistent habit of my journey. 1,350+ problems solved. 23 consecutive days of competitive grinding.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Codeforces Card -->
+                <div class="p-8 border border-grid bg-background-dark group hover:bg-slate-900/30 transition-all rounded-xl">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <svg class="size-6 fill-primary" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">  <title>Codeforces</title> <path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 0.828 -0.672 1.5 -1.5 1.5h-3C0.673 21 0 20.328 0 19.5V9c0 -0.828 0.673 -1.5 1.5 -1.5h3zm9 -4.5c0.828 0 1.5 0.672 1.5 1.5v15c0 0.828 -0.672 1.5 -1.5 1.5h-3c-0.827 0 -1.5 -0.672 -1.5 -1.5v-15c0 -0.828 0.673 -1.5 1.5 -1.5h3zm9 7.5c0.828 0 1.5 0.672 1.5 1.5v7.5c0 0.828 -0.672 1.5 -1.5 1.5h-3c-0.828 0 -1.5 -0.672 -1.5 -1.5V12c0 -0.828 0.672 -1.5 1.5 -1.5h3z"></path> </svg>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-[10px] mono-text uppercase tracking-widest text-[#00FFFF]">Specialist</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Codeforces (@3blatif)</h3>
+                    <p class="mono-text text-sm text-primary mb-6">1,350+ problems solved • 23-day streak</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8">
+                        This isn't just a profile — it's a chronicle of obsession. Codeforces is where I discovered that problem-solving is my true passion. Proud participant in ICPC, ECPC, and IEEEXtreme. Currently mentoring the next generation of competitive programmers.
+                    </p>
+                    <a class="inline-flex items-center gap-2 mono-text text-sm font-bold uppercase tracking-wider text-slate-400 hover:text-primary transition-colors" href="https://codeforces.com/profile/3blatif" target="_blank">
+                        View Profile <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+
+                <!-- LeetCode Card -->
+                <div class="p-8 border border-grid bg-background-dark group hover:bg-slate-900/30 transition-all rounded-xl">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <svg class="size-6 fill-primary" viewbox="0 0 640 640" xmlns="http://www.w3.org/2000/svg"><path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"></path></svg>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">LeetCode (@ahmedabdellatif1)</h3>
+                    <p class="mono-text text-sm text-primary mb-6">DSA Training Ground</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8">
+                        My Data Structures & Algorithms training ground. Showcasing consistency, interview-prep discipline, streaks, and competitive coding speed during global developer challenges.
+                    </p>
+                    <a class="inline-flex items-center gap-2 mono-text text-sm font-bold uppercase tracking-wider text-slate-400 hover:text-primary transition-colors" href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank">
+                        View Profile <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accomplishments Section -->
+        <section class="py-20 border-b border-grid">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-1">
+                    <h2 class="text-sm mono-text uppercase tracking-[0.2em] text-slate-400">Accomplishments</h2>
+                </div>
+                <div class="md:col-span-3 space-y-8">
+                    <div class="flex gap-6 items-start">
+                        <span class="mono-text text-primary text-sm">CP</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Competitive Programming</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">1,350+ problems solved on Codeforces. Active participant in ICPC and ECPC regional competitions.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <span class="mono-text text-primary text-sm">LDR</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Mentoring &amp; Leadership</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">Mentoring junior developers and leading technical workshops on data-driven product design.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <span class="mono-text text-primary text-sm">EDU</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Continuous Learning</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">Deep diving into system design and advanced algorithms to build better software products.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-20 border-b border-grid" id="contact">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-5xl font-black tracking-tight mb-6">Get in <br/> touch.</h2>
+                    <p class="text-xl text-slate-500 dark:text-slate-400 max-w-sm">
+                        Always open to collaborating on innovative projects or discussing opportunities in AI and Backend Systems.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <a class="flex items-center justify-between p-6 bg-primary/5 border border-primary/10 rounded-xl group hover:bg-primary/10 transition-all" href="mailto:ahmedmoabdellatif1@gmail.com">
+                        <div class="flex items-center gap-4">
+                            <span class="material-symbols-outlined text-primary">mail</span>
+                            <span class="font-bold text-lg">Email Me</span>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">arrow_outward</span>
+                    </a>
+                    <div class="grid grid-cols-2 gap-4">
+                        <a class="flex items-center gap-3 p-4 border border-grid rounded-xl hover:bg-slate-900/50 transition-colors group" href="https://linkedin.com/in/abdellatif72" target="_blank">
+                            <span class="material-symbols-outlined text-primary text-xl">link</span>
+                            <span class="mono-text text-sm font-bold uppercase tracking-wider">LinkedIn</span>
+                        </a>
+                        <a class="flex items-center gap-3 p-4 border border-grid rounded-xl hover:bg-slate-900/50 transition-colors group" href="https://github.com/abdellatif72" target="_blank">
+                            <span class="material-symbols-outlined text-primary text-xl">terminal</span>
+                            <span class="mono-text text-sm font-bold uppercase tracking-wider">GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="mono-text text-xs text-slate-500">
+                © 2026 Ahmed Abdellatif. Built with precision.
+            </div>
+            <div class="flex gap-8 mono-text text-xs uppercase tracking-widest">
+                <a class="hover:text-primary transition-colors" href="https://linkedin.com/in/abdellatif72" target="_blank">LinkedIn</a>
+                <a class="hover:text-primary transition-colors" href="https://github.com/abdellatif72" target="_blank">GitHub</a>
+                <a class="hover:text-primary transition-colors" href="#">Twitter</a>
+            </div>
+        </footer>
     </div>
-
-    <!-- Hero Section -->
-    <header class="section hero" id="hero">
-        <div class="container hero-content fade-in">
-            <span class="badge">Always Learning</span>
-            <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ahmed Abdellatif</span>. <br>Computer &amp; Data
-                Science Student.</h1>
-            <p class="hero-subtitle">If I could work on one type of problem for the rest of my life, it would be
-                solving problems using software — no matter the stack. I turn data into stories, build robust logic, and
-                thrive in competitive programming.</p>
-            <div class="hero-actions">
-                <a href="#about" class="btn btn-primary">My Story</a>
-                <a href="#projects" class="btn btn-outline">View Projects</a>
-            </div>
-        </div>
-        <!-- Decorative Background -->
-        <div class="hero-bg-glow"></div>
-    </header>
-
-    <!-- About Section (The Story) -->
-    <section class="section" id="about">
-        <div class="container fade-in">
-            <div class="section-header">
-                <h2>My <span class="text-primary">Journey</span></h2>
-                <p>From a middle school HTML assignment to leading teams, mentoring communities, and solving 1,350+ competitive programming problems. A story of obsession, growth, and the relentless pursuit of solving harder problems.</p>
-            </div>
-
-            <!-- Chapter Cards -->
-            <div class="journey-cards">
-
-                <div class="journey-card glass-card">
-                    <div class="journey-card-icon">💻</div>
-                    <div class="journey-card-body">
-                        <h3>The Spark: Middle School Assignment</h3>
-                        <p>It all started with an "Introduction to Computer" course and a simple assignment: build a login page in HTML. But something clicked. I became obsessed. Every weekend, I was there tweaking the design, fixing UI bugs, learning CSS, experimenting with templates. That homework assignment turned into my first obsession — and it never stopped.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card glass-card">
-                    <div class="journey-card-icon">🚀</div>
-                    <div class="journey-card-body">
-                        <h3>The Awakening: CS50x &amp; Problem Solving</h3>
-                        <p>In high school, I enrolled in <strong>CS50x</strong> — and that's when the real journey began. I shifted from front-end templates to algorithms. Learned C, then dove deep into C++. Started crushing problems on CodeWars: <strong>300+ problems solved</strong>. That's when I discovered my true spark — the thrill of solving complex problems with pure logic and algorithmic thinking. Problem-solving became my drug.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card glass-card">
-                    <div class="journey-card-icon">⚡</div>
-                    <div class="journey-card-body">
-                        <h3>The Competitive Era: Codeforces &amp; University</h3>
-                        <p>University brought me to <strong>Codeforces</strong>, and everything accelerated. I found a community of competitive programmers and pushed myself relentlessly. <strong>Over 1,350 problems solved</strong>. My highest streak? <strong>23 consecutive days of grinding</strong>. Competed in ICPC, ECPC, and IEEEXtreme. Built solid fundamentals in Algorithms, Data Structures, OOP, Operating Systems, Databases, System Design, and Networking. Then I expanded — Linear Algebra, Calculus, Statistics, Data Mining, Machine Learning, AI. Even designed logic gates from scratch using HDL. The breadth of knowledge deepened my ability to think systemically.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card glass-card">
-                    <div class="journey-card-icon">🎓</div>
-                    <div class="journey-card-body">
-                        <h3>Beyond Myself: Mentoring &amp; Leadership</h3>
-                        <p>My passion evolved from competing alone to <strong>lifting others up</strong>. I joined the ICPC community as a trainer, mentor, and problem setter. Mentored students in algorithmic thinking. Delivered training on monotonic functions and binary search. Set problems for local contests. Result? <strong>30% increase in contestants</strong> competing in our community. Then came my biggest challenge: leading <strong>3 different teams</strong> on final projects in a single semester. High pressure, but we delivered — and all my teammates got the best marks. That pressure taught me real leadership, teamwork, and mentorship.</p>
-                    </div>
-                </div>
-
-                <!-- <div class="journey-card glass-card">
-                    <div class="journey-card-icon">🧠</div>
-                    <div class="journey-card-body">
-                        <h3>Helping Others (Before ChatGPT Changed Everything)</h3>
-                        <p>Beyond competition and mentoring, I helped my university colleagues debug their code and understand complex topics — from algorithms to mathematics. I was fortunate to do this before the explosion of AI assistants like ChatGPT 3.5. Those interactions taught me that <strong>real teaching goes beyond solving; it's about building understanding</strong>. It deepened my technical communication skills and my ability to think about problems from different angles.</p>
-                    </div>
-                </div> -->
-
-                <div class="journey-card glass-card">
-                    <div class="journey-card-icon">📊</div>
-                    <div class="journey-card-body">
-                        <h3>Data Science &amp; Teamwork</h3>
-                        <p>Through university projects, I dove into Data Science and Machine Learning — working in teams, learning how to collaborate, making decisions together. I learned <strong>Data Analysis, Web Scraping, Data Manipulation, Data Cleaning, Regex</strong>. Worked with PowerBI to tell stories with data. Discovered that data science isn't just math — it's about translating insights into meaningful narratives.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card glass-card">
-                    <div class="journey-card-icon">📱</div>
-                    <div class="journey-card-body">
-                        <h3>Expansion: Flutter &amp; Beyond</h3>
-                        <p>My passion for Computer Science and AI didn't plateau. I enrolled in the <strong>Digital Egypt Pioneers Initiative, Software Development (Flutter) track</strong>. The goal? Learn to "code once, run everywhere." This opened my eyes to real product development and brought my skills into the mobile ecosystem. I'm currently learning and practicing building applications with Flutter.</p> 
-                        <!-- , with plans to expand into <strong>Backend Engineering, AI, and Machine Learning</strong> at scale. -->
-                    </div>
-                </div>
-
-                <div class="journey-card glass-card">
-                    <div class="journey-card-icon">⚙️</div>
-                    <div class="journey-card-body">
-                        <h3>What Drives Me</h3>
-                        <p>If I could work on just one type of problem for the rest of my life, it would be <strong>solving problems using software</strong>. It doesn't matter what the stack is, what the domain is, or how complex it gets. <strong>The problem is the prize.</strong> Every challenge — whether it's a competitive programming problem on Codeforces, a data science challenge, a system architecture decision, or a real-world product bug — they all light the same fire in me. That's my constant.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="about-grid">
-                <div class="about-card glass-card">
-                    <h3>Coursework</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 16px;">Key classes that built my technical foundation.</p>
-                    <div class="tags">
-                        <span class="tag">Data Structures</span>
-                        <span class="tag">Algorithm Design</span>
-                        <span class="tag">Data Science</span>
-                        <span class="tag">Statistics</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Object-Oriented Programming</span>
-                        <span class="tag">Linear Algebra</span>
-                        <span class="tag">Advanced Calculus</span>
-                        <span class="tag">Probability</span>
-                        <span class="tag">Operating Systems</span>
-                        <span class="tag">Artificial Intelligence</span>
-                        <span class="tag">Database Systems</span>
-                        <span class="tag">Concurrent Algorithms</span>
-                        <span class="tag">Regression Analysis</span>
-                        <span class="tag">Data Computation</span>
-                        <span class="tag">Computer Networking</span>
-                    </div>
-                </div>
-                <div class="about-card glass-card">
-                    <h3>Technologies &amp; Languages</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 16px;">The core tools I leverage to solve
-                        algorithmic and engineering challenges.</p>
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Java</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">R</span>
-                        <span class="tag">SQL Server</span>
-                        <span class="tag">SQLite</span>
-                        <span class="tag">Dart</span>
-                        <span class="tag">Flutter</span>
-                    </div>
-                </div>
-                <div class="about-card glass-card">
-                    <h3>Data Science &amp; Tools</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 16px;">Expertise gained through team-driven
-                        university projects in analysis and ML.</p>
-                    <div class="tags">
-                        <span class="tag">Data Analysis</span>
-                        <span class="tag">Web Scraping</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">AI Algorithms</span>
-                        <span class="tag">Data Manipulation</span>
-                        <span class="tag">Data Cleaning</span>
-                        <span class="tag">PowerBI</span>
-                        <span class="tag">Regex</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Competitive Programming Section (Bento Grid) -->
-    <section class="section bg-alt" id="cp">
-        <div class="container fade-in">
-            <div class="section-header">
-                <h2>Competitive <span class="text-primary">Programming</span></h2>
-                <p>The most consistent habit of my journey. Where obsession meets discipline. 1,350+ problems solved. 23 consecutive days of competitive grinding.</p>
-            </div>
-            <div class="bento-grid">
-
-                <!-- Codeforces Bento Box -->
-                <a href="https://codeforces.com/profile/3blatif" target="_blank" rel="noopener noreferrer"
-                    class="bento-card codeforces glass-card">
-                    <div class="bento-header">
-                        <!-- <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-                            <path
-                                d="M4.53 7.82V19.4c0 1.25-1.01 2.26-2.26 2.26S0 20.65 0 19.4V7.82c0-1.25 1.01-2.26 2.26-2.26s2.27 1.01 2.27 2.26zm9.74 3.12v8.46c0 1.25-1.02 2.26-2.27 2.26s-2.26-1.01-2.26-2.26v-8.46c0-1.25 1.01-2.27 2.26-2.27 1.25 0 2.27 1.02 2.27 2.27zm9.73-8.68v17.14c0 1.25-1.01 2.26-2.26 2.26s-2.27-1.01-2.27-2.26V2.26C19.47 1.01 20.48 0 21.73 0s2.27 1.01 2.27 2.26z" />
-                        </svg> -->
-                            <img width="24" height="24" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/external-codeforces-programming-competitions-and-contests-programming-community-logo-color-tal-revivo.png" alt="external-codeforces-programming-competitions-and-contests-programming-community-logo-color-tal-revivo"/>
-
-
-                        <h3>Codeforces</h3>
-                        <span class="handle">@3blatif</span>
-                    </div>
-                    <div class="bento-body">
-                        <p><strong>1,350+ problems solved.</strong> A <span style="color: #00FFFF;">Specialist</span> rating. A 23-day relentless streak of grinding. This isn't just a profile — it's a chronicle of obsession. Codeforces is where I discovered that problem-solving is my true passion. Every contest, every rating point, every failed submission taught me something. Proud participant in ICPC, ECPC, and IEEEXtreme. Currently mentoring the next generation of competitive programmers to achieve what we achieved.</p>
-                    </div>
-                    <div class="bento-footer">
-                        View Profile &rarr;
-                    </div>
-                </a>
-
-                <!-- LeetCode Bento Box -->
-                <a href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank" rel="noopener noreferrer"
-                    class="bento-card leetcode glass-card">
-                    <div class="bento-header">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-                            <path
-                                d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.956-.207a1.384 1.384 0 0 0-.214-1.956l-3.501-2.831a4.356 4.356 0 0 0-1.874-.863l.635-.68 5.412-5.798c.536-.575.5A1.444 1.444 0 0 0 18.6 0zM5.561 24h15.602c.81 0 1.467-.625 1.467-1.396 0-.772-.657-1.396-1.467-1.396H5.561c-.81 0-1.467.625-1.467 1.396 0 .771.657 1.396 1.467 1.396z" />
-                        </svg>
-                        <h3>LeetCode</h3>
-                        <span class="handle">@ahmedabdellatif1</span>
-                    </div>
-                    <div class="bento-body">
-                        <p>My Data Structures &amp; Algorithms training ground. Showcasing consistency, interview-prep
-                            discipline, streaks, and competitive coding speed during global developer challenges.</p>
-                    </div>
-                    <div class="bento-footer">
-                        View Profile &rarr;
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-        <div class="container fade-in">
-            <div class="section-header">
-                <h2>Featured <span class="text-primary">Projects</span></h2>
-                <p>Theory applied into robust logic and data pipelines</p>
-            </div>
-
-            <div class="projects-grid">
-
-                <!-- Project 1: Data Science & ML -->
-                <article class="project-card glass-card">
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag prj-data">Data Science</span>
-                            <span class="project-tag prj-data">ML</span>
-                        </div>
-                        <h3 class="project-title">Used Car Market Explorer ("Htla2ee")</h3>
-                        <p class="project-desc">Scraped <strong>11K+ listings</strong> from Egypt's largest used car marketplace, extracting <strong>8 key attributes</strong> per listing (brand, model, price, year, mileage, and more). Cleaned and standardized <strong>100% of records</strong>, resolving inconsistent formats and missing values. Automated preprocessing workflows, cutting manual formatting time by <strong>~40%</strong>. Features Ridge Regression and XGBoost prediction models deployed via Streamlit.</p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>Selenium</span>
-                            <span>MongoDB</span>
-                            <span>Scikit-Learn</span>
-                            <span>Pandas</span>
-                        </div>
-                        <a href="https://github.com/khilo619/Htla2ee-Streamlit-app" target="_blank"
-                            class="btn btn-outline btn-small mt-4">View Source</a>
-                    </div>
-                </article>
-
-                <!-- Project 2: Systems & Low-level -->
-                <article class="project-card glass-card">
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Systems</span>
-                            <span class="project-tag">Architecture</span>
-                        </div>
-                        <h3 class="project-title">ALU Design Using HDL</h3>
-                        <p class="project-desc">Implemented <strong>15+ logic gates</strong> and designed an Arithmetic Logic Unit (ALU) supporting <strong>4 arithmetic and 3 logical operations</strong>. Achieved <strong>100% test coverage</strong> by simulating the design against provided test suites, ensuring accurate execution across all operations. Gained deep understanding of combinational logic and hardware design principles through the Nand2Tetris curriculum.</p>
-                        <div class="tech-stack">
-                            <span>HDL</span>
-                            <span>Assembly</span>
-                            <span>Logic Design</span>
-                            <span>Architecture</span>
-                        </div>
-                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
-                    </div>
-                </article>
-
-                <!-- Project 3: Data Analysis & Visualization -->
-                <article class="project-card glass-card">
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag prj-data">Data Analysis</span>
-                        </div>
-                        <h3 class="project-title">R-U-Ready Dashboard</h3>
-                        <p class="project-desc">Interactive Shiny application for analyzing transaction data. Features
-                            K-means clustering for segmentation and Apriori association rule mining to discover patterns
-                            in spending behavior.</p>
-                        <div class="tech-stack">
-                            <span>R</span>
-                            <span>Shiny</span>
-                            <span>dplyr</span>
-                            <span>arules</span>
-                        </div>
-                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
-                    </div>
-                </article>
-
-                <!-- Project 4: Java & Software Development -->
-                <article class="project-card glass-card">
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Software Eng</span>
-                            <span class="project-tag">GUI</span>
-                        </div>
-                        <h3 class="project-title">ATM Application</h3>
-                        <p class="project-desc">A Java-based graphical simulator for ATM functionalities. Built with
-                            Java Swing, demonstrating robust input validation, error handling, and iterative software
-                            development practices.</p>
-                        <div class="tech-stack">
-                            <span>Java</span>
-                            <span>Java Swing</span>
-                        </div>
-                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
-                    </div>
-                </article>
-
-                <!-- Project 5: Flutter Todo List App -->
-                <article class="project-card glass-card">
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Flutter</span>
-                            <span class="project-tag">Mobile</span>
-                        </div>
-                        <h3 class="project-title">Todo List App</h3>
-                        <p class="project-desc">Lightweight and uncluttered, this Flutter todo app is all about simplicity and clean aesthetics. I recreated a minimalist Dribbble design as a proof of concept, using the <code>provider</code> package for state management to keep logic decoupled from UI. The result is a responsive layout that feels native on mobile and web while remaining easy to maintain and extend.</p>
-                        <div class="tech-stack">
-                            <span>Flutter</span>
-                            <span>Dart</span>
-                            <span>Provider</span>
-                        </div>
-                        <a href="https://github.com/abdellatif72/Todo-List" target="_blank" class="btn btn-outline btn-small mt-4">View Source</a>
-                    </div>
-                </article>
-                <!-- Project 6: C++ Shell (In Progress) -->
-                <article class="project-card glass-card">
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Systems</span>
-                            <span class="project-tag">OS</span>
-                        </div>
-                        <h3 class="project-title">
-                            C++ Command-Line Shell
-                            <span class="badge-wip">In Progress</span>
-                        </h3>
-                        <p class="project-desc">Building a command-line shell in C++ supporting <strong>piping, I/O redirection, and process management</strong> for <strong>10+ sample commands</strong>. Applies OS concepts including process control, file descriptors, and inter-process communication (IPC) to ensure robust, real-world shell functionality.</p>
-                        <div class="tech-stack">
-                            <span>C++</span>
-                            <span>OS Concepts</span>
-                            <span>IPC</span>
-                            <span>Process Control</span>
-                        </div>
-                        <a href="#" class="btn btn-outline btn-small mt-4">View Source</a>
-                    </div>
-                </article>
-
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section bg-alt" id="contact">
-        <div class="container fade-in">
-            <div class="contact-box glass-card">
-                <div class="contact-text">
-                    <h2>Ready to <span class="text-primary">Connect?</span></h2>
-                    <p>Whether it's discussing algorithmic theories, diving into raw data, or exploring internship
-                        opportunities, I'm always open to talking.</p>
-
-                    <div class="social-links">
-
-                        <!-- Codeforces -->
-                        <a href="https://codeforces.com/profile/3blatif" target="_blank" class="social-icon cf-icon" aria-label="Codeforces">
-                            <!-- Codeforces bar-chart logo -->
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M4.53 7.82V19.4c0 1.25-1.01 2.26-2.26 2.26S0 20.65 0 19.4V7.82c0-1.25 1.01-2.26 2.26-2.26s2.27 1.01 2.27 2.26zm9.74 3.12v8.46c0 1.25-1.02 2.26-2.27 2.26s-2.26-1.01-2.26-2.26v-8.46c0-1.25 1.01-2.27 2.26-2.27 1.25 0 2.27 1.02 2.27 2.27zm9.73-8.68v17.14c0 1.25-1.01 2.26-2.26 2.26s-2.27-1.01-2.27-2.26V2.26C19.47 1.01 20.48 0 21.73 0s2.27 1.01 2.27 2.26z"/>
-                            </svg> -->
-                            <img width="24" height="24" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/external-codeforces-programming-competitions-and-contests-programming-community-logo-color-tal-revivo.png" alt="external-codeforces-programming-competitions-and-contests-programming-community-logo-color-tal-revivo"/>
-                            <!-- <span class="soc-label">Codeforces</span> -->
-                        </a>
-
-                        <!-- LeetCode -->
-                        <a href="https://leetcode.com/u/ahmedabdellatif1/" target="_blank" class="social-icon lc-icon" aria-label="LeetCode">
-                            <!-- LeetCode logo -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.956-.207a1.384 1.384 0 0 0-.214-1.956l-3.501-2.831a4.356 4.356 0 0 0-1.874-.863l.635-.68 5.412-5.798A1.374 1.374 0 0 0 13.483 0zM5.56 24h15.602c.81 0 1.467-.625 1.467-1.396 0-.772-.657-1.396-1.467-1.396H5.561c-.81 0-1.467.625-1.467 1.396 0 .771.657 1.396 1.467 1.396z"/>
-                            </svg>
-                            <!-- <span class="soc-label">LeetCode</span> -->
-                        </a>
-
-                        <!-- GitHub -->
-                        <a href="#" target="_blank" class="social-icon gh-icon" aria-label="GitHub">
-                            <!-- GitHub mark -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                            </svg>
-                            <!-- <span class="soc-label">GitHub</span> -->
-                        </a>
-
-                        <!-- LinkedIn -->
-                        <a href="#" target="_blank" class="social-icon li-icon" aria-label="LinkedIn">
-                            <!-- LinkedIn logo -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                            <!-- <span class="soc-label">LinkedIn</span> -->
-                        </a>
-
-                    </div>
-                </div>
-                <div class="contact-action">
-                    <a href="mailto:ahmedmoabdellatif1@gmail.com" class="btn btn-primary btn-large">Send Me an Email</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <a href="#" class="logo">3blatif<span>.</span></a>
-                <p>Computer Science &amp; Data Science Student.</p>
-            </div>
-            <div class="footer-right">
-                <p>&copy; 2026 Ahmed Abdellatif. Always Learning.</p>
-                <p class="small-text">Generated by <a href="https://xkcd.com/353/" target="_blank" rel="noopener">antigravity</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- App Scripts -->
-    <script src="./js/app.js"></script>
 </body>
-
 </html>

@@ -1,38 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
-       Theme Toggle Functionality
-       ========================================================================== */
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const moonIcon = document.getElementById('moon-icon');
-    const sunIcon = document.getElementById('sun-icon');
-
-    // Always default to dark mode
-    let currentTheme = 'dark';
-    localStorage.setItem('theme', 'dark');
-
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            document.body.classList.add('dark-theme');
-            moonIcon.classList.add('hidden');
-            sunIcon.classList.remove('hidden');
-        } else {
-            document.body.classList.remove('dark-theme');
-            sunIcon.classList.add('hidden');
-            moonIcon.classList.remove('hidden');
-        }
-    }
-
-    // Apply init theme
-    applyTheme(currentTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        applyTheme(currentTheme);
-        localStorage.setItem('theme', currentTheme);
-    });
-
-    /* ==========================================================================
        Mobile Menu Toggle
        ========================================================================== */
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -84,22 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       Cursor Glow Logic
+       Custom Cursor: small lime dot, mix-blend-mode difference
        ========================================================================== */
-    const glow = document.getElementById('cursor-glow');
-    if (glow) {
+    const cursor = document.getElementById('custom-cursor');
+    if (cursor && window.matchMedia('(pointer: fine)').matches) {
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
+        let cursorX = mouseX, cursorY = mouseY;
 
         window.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            glow.style.left = mouseX + 'px';
-            glow.style.top = mouseY + 'px';
         });
 
-        // Set initial position to center
-        glow.style.left = mouseX + 'px';
-        glow.style.top = mouseY + 'px';
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+        animateCursor();
     }
 });
